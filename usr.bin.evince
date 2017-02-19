@@ -1,0 +1,61 @@
+# Last Modified: Sun Feb 19 03:16:03 2017
+#include <tunables/global>
+
+/usr/bin/evince {
+  #include <abstractions/audio>
+  #include <abstractions/base>
+  #include <abstractions/cups-client>
+  #include <abstractions/dbus-session-strict>
+  #include <abstractions/fonts>
+  #include <abstractions/freedesktop.org>
+  #include <abstractions/gnome>
+  #include <abstractions/nameservice>
+
+  /**.pdf r,
+  /home/*/.Xauthority r,
+  /home/*/.cache/dconf/user rw,
+  /home/*/.config/dconf/user r,
+  /home/*/.config/fontconfig/fonts.conf r,
+  /home/*/.config/pulse/cookie rk,
+  /home/*/.cups/lpoptions r,
+  /home/*/.local/share/applications/ r,
+  /home/*/.local/share/applications/mimeapps.list r,
+  /home/*/.local/share/applications/mimeinfo.cache r,
+  /home/*/.local/share/applications/userapp-Thunderbird-*.desktop r,
+  /home/*/.local/share/gvfs-metadata/*.log r,
+  /home/*/.local/share/gvfs-metadata/root r,
+  /home/*/.local/share/icons/ r,
+  /home/*/.local/share/icons/hicolor/128x128/apps/ r,
+  /home/*/.local/share/icons/hicolor/16x16/apps/ r,
+  /home/*/.local/share/icons/hicolor/256x256/apps/ r,
+  /home/*/.local/share/icons/hicolor/32x32/apps/ r,
+  /home/*/.local/share/icons/hicolor/48x48/apps/ r,
+  /home/*/.local/share/icons/hicolor/64x64/apps/ r,
+  /home/*/.local/share/icons/hicolor/96x96/apps/ r,
+  /home/*/.local/share/mime/mime.cache r,
+  /home/*/.local/share/recently-used.xbel rw,
+  /home/*/.local/share/recently-used.xbel.* rw,
+  /home/*/.pulse/ r,
+  /tmp/** rw,
+  /usr/bin/evince mr,
+  /usr/share/cursors/** r,
+  /usr/share/evince/icons/ r,
+  /usr/share/evince/icons/hicolor/16x16/actions/ r,
+  /usr/share/evince/icons/hicolor/16x16/mimetypes/ r,
+  /usr/share/evince/icons/hicolor/22x22/actions/ r,
+  /usr/share/evince/icons/hicolor/22x22/mimetypes/ r,
+  /usr/share/evince/icons/hicolor/24x24/actions/ r,
+  /usr/share/evince/icons/hicolor/24x24/mimetypes/ r,
+  /usr/share/evince/icons/hicolor/32x32/actions/ r,
+  /usr/share/evince/icons/hicolor/32x32/mimetypes/ r,
+  /usr/share/evince/icons/hicolor/48x48/actions/ r,
+  /usr/share/evince/icons/hicolor/scalable/actions/ r,
+  /usr/share/evince/icons/hicolor/scalable/mimetypes/ r,
+  /usr/share/glib-2.0/schemas/gschemas.compiled r,
+  /usr/share/poppler/cMap/ r,
+  /usr/share/poppler/cidToUnicode/ r,
+  /usr/share/poppler/nameToUnicode/ r,
+  /usr/share/poppler/nameToUnicode/* r,
+  /usr/share/poppler/unicodeMap/ r,
+
+}
