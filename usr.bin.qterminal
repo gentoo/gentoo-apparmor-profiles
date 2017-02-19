@@ -1,4 +1,4 @@
-# Last Modified: Sat Feb 18 18:46:25 2017
+# Last Modified: Sun Feb 19 16:19:31 2017
 #include <tunables/global>
 
 /usr/bin/qterminal {
@@ -21,6 +21,7 @@
   /run/udev/data/+pci:0000:00:02.0 r,
   /sys/devices/pci0000:00/0000:00:02.0/uevent r,
   /usr/bin/qterminal mr,
+  /usr/bin/xdg-open r,
   /usr/share/cursors/** r,
   /usr/share/qtermwidget5/color-schemes/ r,
   /usr/share/qtermwidget5/color-schemes/*.colorscheme r,
@@ -28,4 +29,5 @@
   /usr/share/qtermwidget5/kb-layouts/ r,
   /usr/share/qtermwidget5/kb-layouts/*.keytab r,
   /{usr/,}lib{,32,64}/** mr,
+
 }
