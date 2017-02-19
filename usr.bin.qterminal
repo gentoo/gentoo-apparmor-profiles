@@ -1,0 +1,31 @@
+# Last Modified: Sat Feb 18 18:46:25 2017
+#include <tunables/global>
+
+/usr/bin/qterminal {
+  #include <abstractions/X>
+  #include <abstractions/base>
+  #include <abstractions/consoles>
+  #include <abstractions/dbus-session-strict>
+  #include <abstractions/fonts>
+  #include <abstractions/freedesktop.org>
+
+  /bin/bash PUx -> /bin/bash,
+  /dev/ptmx rw,
+  /etc/udev/udev.conf r,
+  /home/*/.Xauthority r,
+  /home/*/.cache/qt_compose_cache_* r,
+  /home/*/.config/fontconfig/fonts.conf r,
+  /home/*/.config/qterminal.org/.* rwk,
+  /home/*/.config/qterminal.org/qterminal.ini rw,
+  /home/*/.config/qterminal.org/qterminal.ini.* rwk,
+  /run/udev/data/+pci:0000:00:02.0 r,
+  /sys/devices/pci0000:00/0000:00:02.0/uevent r,
+  /usr/bin/qterminal mr,
+  /usr/share/cursors/** r,
+  /usr/share/qtermwidget5/color-schemes/ r,
+  /usr/share/qtermwidget5/color-schemes/*.colorscheme r,
+  /usr/share/qtermwidget5/color-schemes/*.schema r,
+  /usr/share/qtermwidget5/kb-layouts/ r,
+  /usr/share/qtermwidget5/kb-layouts/*.keytab r,
+  /{usr/,}lib{,32,64}/** mr,
+}

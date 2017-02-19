@@ -1,0 +1,36 @@
+# Last Modified: Sat Feb 18 17:07:53 2017
+#include <tunables/global>
+
+/usr/bin/okular {
+  #include <abstractions/base>
+  #include <abstractions/kde>
+  #include <abstractions/nameservice>
+  #include <abstractions/dbus>
+
+  /**.pdf r,
+  /home/*/.Xauthority r,
+  /home/*/.config/Trolltech.conf rk,
+  /home/*/.config/fontconfig/fonts.conf r,
+  /home/*/.kde4/share/config/kdebugrc r,
+  /home/*/.kde4/share/config/kdeglobals r,
+  /home/*/.kde4/share/config/okularpartrc r,
+  /home/*/.kde4/share/config/okularrc rw,
+  /home/*/.kde4/share/config/okularrc*.new rw,
+  /home/*/.kde4/share/config/okularrc.lock w,
+  /home/*/.local/share/mime/aliases r,
+  /home/*/.local/share/mime/globs2 r,
+  /home/*/.local/share/mime/magic r,
+  /home/*/.local/share/mime/subclasses r,
+  /home/*/.local/share/mime/version r,
+  /usr/bin/okular mr,
+  /usr/share/apps/okular/part.rc r,
+  /usr/share/apps/okular/shell.rc r,
+  /usr/share/apps/okular/tools.xml r,
+  /usr/share/config/kdebug.areas r,
+  /usr/share/config/kdebugrc r,
+  /usr/share/config/ui/ui_standards.rc r,
+  /usr/share/cursors/** r,
+  /usr/share/locale/ r,
+  /var/tmp/kdecache-*/** rw,
+  /{usr/,}lib{,32,64}/** mr,
+}

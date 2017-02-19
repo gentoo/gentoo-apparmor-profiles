@@ -1,0 +1,26 @@
+# Last Modified: Sun Feb 19 02:18:55 2017
+#include <tunables/global>
+
+/usr/bin/pulseaudio flags=(complain) {
+  #include <abstractions/audio>
+  #include <abstractions/base>
+  #include <abstractions/dbus-session-strict>
+  #include <abstractions/user-tmp>
+
+  capability sys_ptrace,
+
+  /home/ r,
+  /home/*/ r,
+  /home/*/.Xauthority r,
+  /home/*/.pulse/ r,
+  /home/*/.pulse/*-runtime r,
+  /proc/*/fd/ r,
+  /proc/*/stat r,
+  /sys/devices/virtual/dmi/id/bios_vendor r,
+  /sys/devices/virtual/dmi/id/sys_vendor r,
+  /tmp/pulse-*/ r,
+  /tmp/pulse-*/autospawn.lock rwk,
+  /usr/bin/pulseaudio Px,
+  /usr/bin/pulseaudio mr,
+
+}

@@ -1,0 +1,45 @@
+# Last Modified: Sun Feb 19 02:21:34 2017
+#include <tunables/global>
+
+/usr/bin/quasselclient {
+  #include <abstractions/audio>
+  #include <abstractions/base>
+  #include <abstractions/dbus-session-strict>
+  #include <abstractions/fonts>
+  #include <abstractions/freedesktop.org>
+  #include <abstractions/kde>
+  #include <abstractions/nameservice>
+  #include <abstractions/python>
+
+  /dev/ r,
+  /home/*/.Xauthority r,
+  /home/*/.cache/gstreamer-1.0/registry.x86_64.bin rw,
+  /home/*/.cache/gstreamer-1.0/registry.x86_64.bin.tmp* rw,
+  /home/*/.config/Trolltech.conf rk,
+  /home/*/.config/fontconfig/fonts.conf r,
+  /home/*/.config/pulse/cookie rk,
+  /home/*/.config/quassel-irc.org/quasselclient.conf rwk,
+  /home/*/.config/quassel-irc.org/settings.qss rwk,
+  /home/*/.kde4/share/config/kdebugrc r,
+  /home/*/.kde4/share/config/kdeglobals r,
+  /home/*/.kde4/share/config/quasselrc rw,
+  /home/*/.kde4/share/config/quasselrc*.new rwk,
+  /home/*/.pulse rw,
+  /home/*/.pulse/ rw,
+  /home/*/.pulse/** rwk,
+  /proc/*/fd/ r,
+  /usr/bin/pulseaudio Px,
+  /usr/bin/quasselclient mr,
+  /usr/lib64/gstreamer-1.0/gst-plugin-scanner Px,
+  /usr/share/apps/quassel/stylesheets/*.qss r,
+  /usr/share/apps/quassel/translations/en_US.qm r,
+  /usr/share/config/kdebug.areas r,
+  /usr/share/config/kdebugrc r,
+  /usr/share/cursors/xorg-x11/Obsidian/cursors/* r,
+  /usr/share/icons/** rk,
+  /usr/share/quassel/stylesheets/*.qss r,
+  /usr/share/quassel/translations/ r,
+  /usr/share/quassel/translations/*.qm r,
+  /var/tmp/kdecache-amir/icon-cache.kcache rw,
+
+}
