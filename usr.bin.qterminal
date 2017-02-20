@@ -1,4 +1,4 @@
-# Last Modified: Sun Feb 19 16:19:31 2017
+# Last Modified: Mon Feb 20 12:16:16 2017
 #include <tunables/global>
 
 /usr/bin/qterminal {
@@ -8,6 +8,8 @@
   #include <abstractions/dbus-session-strict>
   #include <abstractions/fonts>
   #include <abstractions/freedesktop.org>
+
+  capability sys_ptrace,
 
   /bin/bash PUx -> /bin/bash,
   /dev/ptmx rw,

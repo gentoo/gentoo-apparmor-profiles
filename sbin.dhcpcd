@@ -1,4 +1,4 @@
-# Last Modified: Mon Feb 20 00:25:22 2017
+# Last Modified: Mon Feb 20 13:01:23 2017
 #include <tunables/global>
 
 # ------------------------------------------------------------------
@@ -20,7 +20,7 @@
 # vim:syntax=apparmor
 
 
-/sbin/dhcpcd {
+profile dhcpcd /{usr/,}sbin/dhcpcd {
   #include <abstractions/base>
   #include <abstractions/nameservice>
 
@@ -46,6 +46,7 @@
   /var/lib/dhcpcd/dhcpcd-*.info rw,
   /var/lib/dhcpcd/dhcpcd-*.info.old rw,
   /var/lib/dhcpcd/dhcpcd-*.lease rw,
+  /var/lib/dhcpcd/dhcpcd-*.lease6 rw,
   /{,var/}run/dhcpcd-*.pid rwlk,
   /{usr/,}bin/bash mrix,
   /{usr/,}bin/touch mrix,
@@ -54,13 +55,39 @@
   /{usr/,}sbin/modify_resolvconf mrix,
 
 
-  profile /lib64/dhcpcd/dhcpcd-run-hooks flags=(complain) {
+  profile /lib64/dhcpcd/dhcpcd-run-hooks {
     #include <abstractions/base>
     #include <abstractions/bash>
     #include <abstractions/consoles>
     #include <abstractions/nameservice>
 
     /bin/bash mr,
+    /bin/cat mr,
+    /bin/cat rix,
+    /bin/chmod rix,
+    /bin/hostname rix,
+    /bin/rm mr,
+    /bin/rm rix,
+    /bin/sed mr,
+    /bin/sed rix,
+    /etc/init.d/ntpd rix,
+    /etc/ntp.conf rw,
+    /etc/resolv.conf rw,
+    /etc/resolv.conf.head r,
+    /etc/resolv.conf.tail r,
+    /run/dhcpcd/ntp.conf.*.dhcp rw,
+    /run/dhcpcd/ntp.conf.*.dhcp6 rw,
+    /run/dhcpcd/ntp.conf.*.ra rw,
+    /run/dhcpcd/ntp.conf/ r,
+    /run/dhcpcd/ntp.conf/*.dhcp rw,
+    /run/dhcpcd/resolv.conf.*.dhcp rw,
+    /run/dhcpcd/resolv.conf.*.dhcp6 rw,
+    /run/dhcpcd/resolv.conf.*.ra rw,
+    /run/dhcpcd/resolv.conf/ r,
+    /run/dhcpcd/resolv.conf/*.dhcp rw,
+    /run/dhcpcd/resolv.conf/*.dhcp6 rw,
+    /sbin/rc-service rix,
+    /usr/bin/cmp rix,
 
   }
 }
