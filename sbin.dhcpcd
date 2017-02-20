@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 00:05:42 2017
+# Last Modified: Tue Feb 21 00:35:39 2017
 #include <tunables/global>
 
 # ------------------------------------------------------------------
@@ -51,6 +51,7 @@ profile dhcpcd /{usr/,}sbin/dhcpcd {
   /proc/sys/net/ipv6/conf/*/accept_ra rw,
   /proc/sys/net/ipv6/conf/*/autoconf rw,
   /run/dhcpcd/ rw,
+  /run/openrc/scheduled/ r,
   /sbin/rc-service rix,
   /var/lib/dhcpcd/dhcpcd-*.cache rw,
   /var/lib/dhcpcd/dhcpcd-*.info rw,
@@ -72,4 +73,5 @@ profile dhcpcd /{usr/,}sbin/dhcpcd {
   /{usr/,}sbin/dhcpcd mrix,
   /{usr/,}sbin/ifup Ux, # fixme
   /{usr/,}sbin/modify_resolvconf mrix,
+
 }

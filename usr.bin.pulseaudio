@@ -1,10 +1,11 @@
-# Last Modified: Tue Feb 21 00:15:49 2017
+# Last Modified: Tue Feb 21 00:41:29 2017
 #include <tunables/global>
 
 /usr/bin/pulseaudio {
   #include <abstractions/audio>
   #include <abstractions/base>
   #include <abstractions/dbus-session-strict>
+  #include <abstractions/freedesktop.org>
   #include <abstractions/user-tmp>
 
   capability sys_ptrace,
@@ -16,17 +17,25 @@
   /home/*/.config/pulse/cookie rk,
   /home/*/.pulse/ r,
   /home/*/.pulse/*-runtime r,
+  /home/*/orcexec.* w,
   /proc/*/fd/ r,
   /proc/*/stat r,
+  /run/udev/data/* r,
+  /run/udev/data/+sound:card* r,
   /sys/bus/ r,
   /sys/class/ r,
   /sys/class/sound/ r,
+  /sys/devices/**/pcm_class r,
+  /sys/devices/**/uevent r,
   /sys/devices/virtual/dmi/id/bios_vendor r,
   /sys/devices/virtual/dmi/id/sys_vendor r,
+  /tmp/** m,
   /tmp/pulse-*/ r,
   /tmp/pulse-*/autospawn.lock rwk,
   /usr/bin/pulseaudio Px,
   /usr/bin/pulseaudio mr,
+  /usr/share/pulseaudio/alsa-mixer/paths/* r,
+  /usr/share/pulseaudio/alsa-mixer/profile-sets/* r,
   /{usr/,}lib{,32,64}/** mr,
 
 }
