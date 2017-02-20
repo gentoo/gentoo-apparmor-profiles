@@ -1,3 +1,8 @@
+# Last Modified: Tue Feb 21 00:05:42 2017
+@{CHROOT_BASE} = ""
+
+#include <tunables/global>
+
 # ------------------------------------------------------------------
 #
 #    Copyright (C) 2006-2009 Novell/SUSE
@@ -9,26 +14,24 @@
 #    License published by the Free Software Foundation.
 #
 # ------------------------------------------------------------------
-
-#include <tunables/global>
-
 #define this to be where syslog-ng is chrooted
-@{CHROOT_BASE}=""
+
 
 profile syslog-ng /{usr/,}sbin/syslog-ng {
   #include <abstractions/base>
   #include <abstractions/consoles>
-  #include <abstractions/nameservice>
   #include <abstractions/mysql>
+  #include <abstractions/nameservice>
   #include <abstractions/openssl>
+  #include <local/sbin.syslog-ng>
 
   capability chown,
   capability dac_override,
   capability dac_read_search,
-  capability fsetid,
   capability fowner,
-  capability sys_tty_config,
+  capability fsetid,
   capability sys_resource,
+  capability sys_tty_config,
   capability syslog,
 
   unix (receive) type=dgram,
@@ -38,29 +41,29 @@ profile syslog-ng /{usr/,}sbin/syslog-ng {
   /dev/syslog w,
   /dev/tty10 rw,
   /dev/xconsole rw,
+  /etc/hosts.allow r,
+  /etc/hosts.deny r,
   /etc/machine-id r,
   /etc/syslog-ng/* r,
   /etc/syslog-ng/conf.d/ r,
   /etc/syslog-ng/conf.d/* r,
-  @{PROC}/kmsg r,
-  /etc/hosts.deny r,
-  /etc/hosts.allow r,
-  /{usr/,}sbin/syslog-ng mr,
+  /proc/*/cmdline r,
+  /proc/*/loginuid r,
+  /proc/*/sessionid r,
   /sys/devices/system/cpu/online r,
   /usr/share/syslog-ng/** r,
   /var/lib/syslog-ng/syslog-ng-?????.qf rw,
-  # chrooted applications
-  @{CHROOT_BASE}/var/lib/*/dev/log w,
-  @{CHROOT_BASE}/var/lib/syslog-ng/syslog-ng.persist* rw,
-  @{CHROOT_BASE}/var/log/** w,
-  @{CHROOT_BASE}/{,var/}run/syslog-ng.pid krw,
-  @{CHROOT_BASE}/{,var/}run/syslog-ng.ctl rw,
+  /{usr/,}sbin/syslog-ng mr,
   /{var,var/run,run}/log/journal/ r,
   /{var,var/run,run}/log/journal/*/ r,
   /{var,var/run,run}/log/journal/*/*.journal r,
   /{var/,}run/syslog-ng.ctl a,
   /{var/,}run/syslog-ng/additional-log-sockets.conf r,
+  @{CHROOT_BASE}/var/lib/*/dev/log w,
+  @{CHROOT_BASE}/var/lib/syslog-ng/syslog-ng.persist* rw,
+  @{CHROOT_BASE}/var/log/** w,
+  @{CHROOT_BASE}/{,var/}run/syslog-ng.ctl rw,
+  @{CHROOT_BASE}/{,var/}run/syslog-ng.pid rwk,
+  @{PROC}/kmsg r,
 
-  # Site-specific additions and overrides. See local/README for details.
-  #include <local/sbin.syslog-ng>
 }

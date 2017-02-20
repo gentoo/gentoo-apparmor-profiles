@@ -1,4 +1,4 @@
-# Last Modified: Mon Feb 20 00:17:40 2017
+# Last Modified: Mon Feb 20 22:49:44 2017
 #include <tunables/global>
 
 /usr/bin/pulseaudio {
@@ -9,6 +9,7 @@
 
   capability sys_ptrace,
 
+  /etc/udev/udev.conf r,
   /home/ r,
   /home/*/ r,
   /home/*/.Xauthority r,
@@ -17,6 +18,8 @@
   /home/*/.pulse/*-runtime r,
   /proc/*/fd/ r,
   /proc/*/stat r,
+  /sys/bus/ r,
+  /sys/class/ r,
   /sys/devices/virtual/dmi/id/bios_vendor r,
   /sys/devices/virtual/dmi/id/sys_vendor r,
   /tmp/pulse-*/ r,
