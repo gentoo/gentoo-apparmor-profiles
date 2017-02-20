@@ -1,4 +1,4 @@
-# Last Modified: Mon Feb 20 13:26:37 2017
+# Last Modified: Mon Feb 20 20:24:11 2017
 #include <tunables/global>
 
 /usr/bin/quasselclient {
@@ -35,6 +35,7 @@
   /home/*/.pulse rw,
   /home/*/.pulse/** rwk,
   /home/*/orcexec.* mrw,
+  /home/*/sound/ r,
   /home/*/sound/** r,
   /proc/*/fd/ r,
   /run/udev/data/+pci* r,
@@ -53,4 +54,5 @@
   /usr/share/quassel/translations/*.qm r,
   /var/tmp/kdecache-amir/icon-cache.kcache rw,
   /{usr/,}lib{,32,64}/** mr,
+
 }

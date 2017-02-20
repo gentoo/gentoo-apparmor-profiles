@@ -1,4 +1,4 @@
-# Last Modified: Mon Feb 20 13:01:23 2017
+# Last Modified: Mon Feb 20 20:24:11 2017
 #include <tunables/global>
 
 # ------------------------------------------------------------------
@@ -39,7 +39,7 @@ profile dhcpcd /{usr/,}sbin/dhcpcd {
   /etc/yp.conf{,.sv} rwl,
   /lib64/dhcpcd/dhcpcd-run-hooks Cx,
   /proc/*/net/if_inet* r,
-  /proc/sys/net/ipv*/conf/*/promote_secondaries r,
+  /proc/sys/net/ipv*/conf/*/promote_secondaries rw,
   /proc/sys/net/ipv6/conf/*/accept_ra r,
   /proc/sys/net/ipv6/conf/*/autoconf r,
   /var/lib/dhcpcd/dhcpcd-*.cache rw,
