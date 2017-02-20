@@ -1,4 +1,4 @@
-# Last Modified: Mon Feb 20 20:24:11 2017
+# Last Modified: Tue Feb 21 00:15:49 2017
 #include <tunables/global>
 
 /usr/bin/quasselclient {
@@ -43,6 +43,7 @@
   /tmp/orcexec.* m,
   /usr/bin/pulseaudio Px,
   /usr/bin/quasselclient mr,
+  /usr/lib64/gstreamer-1.0/gst-plugin-scanner Px,
   /usr/share/apps/quassel/stylesheets/*.qss r,
   /usr/share/apps/quassel/translations/en_US.qm r,
   /usr/share/config/kdebug.areas r,

@@ -1,4 +1,4 @@
-# Last Modified: Mon Feb 20 20:24:11 2017
+# Last Modified: Tue Feb 21 00:05:42 2017
 #include <tunables/global>
 
 # ------------------------------------------------------------------
@@ -22,72 +22,54 @@
 
 profile dhcpcd /{usr/,}sbin/dhcpcd {
   #include <abstractions/base>
+  #include <abstractions/bash>
+  #include <abstractions/consoles>
   #include <abstractions/nameservice>
 
   capability net_admin,
   capability net_raw,
   capability sys_admin,
+  capability sys_tty_config,
 
-  /dev/tty rw,
   /etc/dhcpc/* rwl,
   /etc/dhcpcd.conf r,
   /etc/dhcpcd.duid rw,
+  /etc/init.d/ntpd Ux, # fixme
   /etc/init.d/syslog Ux, # fixme
+  /etc/init.d/syslog-ng Ux, # fixme
   /etc/ntp.conf{,.sv} rwl,
+  /etc/resolv.conf rw,
+  /etc/resolv.conf.head r,
+  /etc/resolv.conf.tail r,
   /etc/resolv.conf{,.sv} rwl,
   /etc/sysconfig/network/scripts/dhcpcd-hook mrix,
   /etc/yp.conf{,.sv} rwl,
-  /lib64/dhcpcd/dhcpcd-run-hooks Cx,
+  /lib{,64}/dhcpcd/dhcpcd-hooks/{01-test,02-dump,20-resolv.conf,30-hostname,50-ntp.conf,50-yp.conf} rix,
+  /lib{,64}/dhcpcd/dhcpcd-run-hooks rix,
   /proc/*/net/if_inet* r,
   /proc/sys/net/ipv*/conf/*/promote_secondaries rw,
-  /proc/sys/net/ipv6/conf/*/accept_ra r,
-  /proc/sys/net/ipv6/conf/*/autoconf r,
+  /proc/sys/net/ipv6/conf/*/accept_ra rw,
+  /proc/sys/net/ipv6/conf/*/autoconf rw,
+  /run/dhcpcd/ rw,
+  /sbin/rc-service rix,
   /var/lib/dhcpcd/dhcpcd-*.cache rw,
   /var/lib/dhcpcd/dhcpcd-*.info rw,
   /var/lib/dhcpcd/dhcpcd-*.info.old rw,
   /var/lib/dhcpcd/dhcpcd-*.lease rw,
   /var/lib/dhcpcd/dhcpcd-*.lease6 rw,
+  /{,var/}run/dhcpcd rwk,
   /{,var/}run/dhcpcd-*.pid rwlk,
+  /{,var/}run/dhcpcd/** rwk,
   /{usr/,}bin/bash mrix,
+  /{usr/,}bin/cat mrix,
+  /{usr/,}bin/chmod mrix,
+  /{usr/,}bin/cmp rix,
+  /{usr/,}bin/hostname rix,
+  /{usr/,}bin/mkdir mrix,
+  /{usr/,}bin/rm mrix,
+  /{usr/,}bin/sed mrix,
   /{usr/,}bin/touch mrix,
   /{usr/,}sbin/dhcpcd mrix,
   /{usr/,}sbin/ifup Ux, # fixme
   /{usr/,}sbin/modify_resolvconf mrix,
-
-
-  profile /lib64/dhcpcd/dhcpcd-run-hooks {
-    #include <abstractions/base>
-    #include <abstractions/bash>
-    #include <abstractions/consoles>
-    #include <abstractions/nameservice>
-
-    /bin/bash mr,
-    /bin/cat mr,
-    /bin/cat rix,
-    /bin/chmod rix,
-    /bin/hostname rix,
-    /bin/rm mr,
-    /bin/rm rix,
-    /bin/sed mr,
-    /bin/sed rix,
-    /etc/init.d/ntpd rix,
-    /etc/ntp.conf rw,
-    /etc/resolv.conf rw,
-    /etc/resolv.conf.head r,
-    /etc/resolv.conf.tail r,
-    /run/dhcpcd/ntp.conf.*.dhcp rw,
-    /run/dhcpcd/ntp.conf.*.dhcp6 rw,
-    /run/dhcpcd/ntp.conf.*.ra rw,
-    /run/dhcpcd/ntp.conf/ r,
-    /run/dhcpcd/ntp.conf/*.dhcp rw,
-    /run/dhcpcd/resolv.conf.*.dhcp rw,
-    /run/dhcpcd/resolv.conf.*.dhcp6 rw,
-    /run/dhcpcd/resolv.conf.*.ra rw,
-    /run/dhcpcd/resolv.conf/ r,
-    /run/dhcpcd/resolv.conf/*.dhcp rw,
-    /run/dhcpcd/resolv.conf/*.dhcp6 rw,
-    /sbin/rc-service rix,
-    /usr/bin/cmp rix,
-
-  }
 }

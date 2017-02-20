@@ -1,4 +1,4 @@
-# Last Modified: Mon Feb 20 22:49:44 2017
+# Last Modified: Tue Feb 21 00:15:49 2017
 #include <tunables/global>
 
 /usr/bin/pulseaudio {
@@ -20,6 +20,7 @@
   /proc/*/stat r,
   /sys/bus/ r,
   /sys/class/ r,
+  /sys/class/sound/ r,
   /sys/devices/virtual/dmi/id/bios_vendor r,
   /sys/devices/virtual/dmi/id/sys_vendor r,
   /tmp/pulse-*/ r,
