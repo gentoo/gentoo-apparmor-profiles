@@ -1,4 +1,4 @@
-# Last Modified: Mon Feb 20 12:50:57 2017
+# Last Modified: Mon Feb 20 13:26:37 2017
 #include <tunables/global>
 
 /usr/bin/quasselclient {
@@ -10,32 +10,35 @@
   #include <abstractions/freedesktop.org>
   #include <abstractions/kde>
   #include <abstractions/nameservice>
+  #include <abstractions/openssl>
   #include <abstractions/python>
 
   / r,
   /dev/ r,
+  /etc/udev/udev.conf r,
   /home/ r,
   /home/*/ r,
   /home/*/.Xauthority r,
   /home/*/.cache/gstreamer-1.0/registry.x86_64.bin rw,
   /home/*/.cache/gstreamer-1.0/registry.x86_64.bin.tmp* rw,
+  /home/*/.cache/qt_compose_cache_* rw,
   /home/*/.config/Trolltech.conf rk,
   /home/*/.config/fontconfig/fonts.conf r,
   /home/*/.config/pulse/cookie rk,
-  /home/*/.config/quassel-irc.org/quasselclient.conf rwk,
+  /home/*/.config/quassel-irc.org/.* rwk,
+  /home/*/.config/quassel-irc.org/quasselclient.conf* rwk,
   /home/*/.config/quassel-irc.org/settings.qss rwk,
   /home/*/.kde4/share/config/kdebugrc r,
   /home/*/.kde4/share/config/kdeglobals r,
   /home/*/.kde4/share/config/quasselrc rw,
   /home/*/.kde4/share/config/quasselrc*.new rwk,
   /home/*/.pulse rw,
-  /home/*/.pulse/ rw,
   /home/*/.pulse/** rwk,
   /home/*/orcexec.* mrw,
-  /home/*/sound/ r,
-  /home/*/sound/notify/ r,
-  /home/*/sound/notify/Carme.ogg r,
+  /home/*/sound/** r,
   /proc/*/fd/ r,
+  /run/udev/data/+pci* r,
+  /sys/devices/pci**/uevent r,
   /tmp/orcexec.* m,
   /usr/bin/pulseaudio Px,
   /usr/bin/quasselclient mr,
@@ -43,11 +46,11 @@
   /usr/share/apps/quassel/translations/en_US.qm r,
   /usr/share/config/kdebug.areas r,
   /usr/share/config/kdebugrc r,
-  /usr/share/cursors/xorg-x11/Obsidian/cursors/* r,
+  /usr/share/cursors/** r,
   /usr/share/icons/** rk,
   /usr/share/quassel/stylesheets/*.qss r,
   /usr/share/quassel/translations/ r,
   /usr/share/quassel/translations/*.qm r,
   /var/tmp/kdecache-amir/icon-cache.kcache rw,
-
+  /{usr/,}lib{,32,64}/** mr,
 }
