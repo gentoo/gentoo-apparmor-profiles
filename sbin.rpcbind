@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 14:29:41 2017
+# Last Modified: Tue Feb 21 14:36:34 2017
 #include <tunables/global>
 
 /sbin/rpcbind {
@@ -8,6 +8,7 @@
 
   capability setgid,
 
+  /etc/hosts.allow r,
   /etc/netconfig r,
   /run/rpcbind.lock rwk,
   /run/rpcbind.sock w,

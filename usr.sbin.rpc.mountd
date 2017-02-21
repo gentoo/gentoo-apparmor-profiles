@@ -1,0 +1,33 @@
+# Last Modified: Tue Feb 21 14:37:42 2017
+#include <tunables/global>
+
+/usr/sbin/rpc.mountd {
+  #include <abstractions/base>
+
+  capability dac_override,
+
+  /etc/netconfig r,
+  /proc/*/fd/ r,
+  /proc/*/net/rpc/auth.unix.gid/flush rw,
+  /proc/*/net/rpc/auth.unix.gid/flush rw,
+  /proc/*/net/rpc/auth.unix.ip/channel rw,
+  /proc/*/net/rpc/auth.unix.ip/channel rw,
+  /proc/*/net/rpc/auth.unix.ip/flush rw,
+  /proc/*/net/rpc/auth.unix.ip/flush rw,
+  /proc/*/net/rpc/nfsd.export/channel rw,
+  /proc/*/net/rpc/nfsd.export/channel rw,
+  /proc/*/net/rpc/nfsd.export/flush rw,
+  /proc/*/net/rpc/nfsd.export/flush rw,
+  /proc/*/net/rpc/nfsd.fh/channel rw,
+  /proc/*/net/rpc/nfsd.fh/channel rw,
+  /proc/*/net/rpc/nfsd.fh/flush rw,
+  /proc/*/net/rpc/nfsd.fh/flush rw,
+  /proc/fs/nfsd/export_features r,
+  /usr/sbin/rpc.mountd mr,
+  /var/lib/nfs/.etab.lock rwk,
+  /var/lib/nfs/.xtab.lock rwk,
+  /var/lib/nfs/etab r,
+  /var/lib/nfs/xtab r,
+  /var/lib/nfs/xtab.tmp rw,
+
+}
