@@ -1,0 +1,118 @@
+# Last Modified: Tue Feb 21 15:23:13 2017
+#include <tunables/global>
+
+/usr/bin/dockerd flags=(complain) {
+  #include <abstractions/base>
+
+  capability chown,
+  capability dac_override,
+  capability fsetid,
+  capability net_admin,
+  capability net_raw,
+  capability sys_admin,
+  capability sys_resource,
+
+  deny /usr/** rw,
+
+  / r,
+  /.pivot_root*/ w,
+  /bin/kmod mr,
+  /bin/kmod rix,
+  /dev/zfs rw,
+  /etc/apparmor.d/ r,
+  /etc/apparmor.d/cache/ r,
+  /etc/apparmor.d/cache/.features r,
+  /etc/apparmor.d/docker rw,
+  /etc/apparmor/parser.conf r,
+  /etc/dfs/sharetab r,
+  /etc/docker/key.json r,
+  /etc/group r,
+  /etc/modprobe.d/ r,
+  /etc/modprobe.d/*.conf r,
+  /etc/os-release r,
+  /etc/passwd r,
+  /proc/ r,
+  /proc/*/cgroup r,
+  /proc/*/fd/ r,
+  /proc/*/mountinfo r,
+  /proc/*/mounts r,
+  /proc/*/net/ip_tables_names r,
+  /proc/*/oom_score_adj w,
+  /proc/cmdline r,
+  /proc/stat r,
+  /proc/sys/kernel/cap_last_cap r,
+  /proc/sys/kernel/hostname r,
+  /proc/sys/kernel/keys/root_maxkeys r,
+  /proc/sys/kernel/threads-max r,
+  /proc/sys/net/bridge/bridge-nf-call-ip6tables r,
+  /proc/sys/net/bridge/bridge-nf-call-iptables r,
+  /proc/sys/net/core/somaxconn r,
+  /proc/sys/net/ipv4/ip_forward r,
+  /proc/sys/net/ipv4/ip_local_port_range r,
+  /run/docker.pid w,
+  /run/docker.sock w,
+  /run/docker/libcontainerd/docker-containerd.pid rw,
+  /run/docker/libnetwork/** w,
+  /sbin/apparmor_parser Cx,
+  /sbin/apparmor_parser mr,
+  /sbin/xtables-multi mr,
+  /sbin/xtables-multi rix,
+  /sbin/zfs mr,
+  /sbin/zfs rix,
+  /sbin/zpool Cx,
+  /sys/devices/system/cpu/ r,
+  /sys/fs/cgroup/cpuset/cpuset.cpus r,
+  /sys/fs/cgroup/cpuset/cpuset.mems r,
+  /sys/module/apparmor/parameters/enabled r,
+  /sys/module/nf_nat/initstate r,
+  /sys/module/xfrm_algo/initstate r,
+  /sys/module/xfrm_user/initstate r,
+  /sys/module/xt_conntrack/initstate r,
+  /temp-docker-extract*/ w,
+  /usr/bin/containerd Cx,
+  /usr/bin/dockerd mr,
+  /usr/bin/dockerd rix,
+  /var/cache/docker/ w,
+  /var/cache/docker/** rwk,
+
+  profile /sbin/apparmor_parser {
+    #include <abstractions/base>
+
+    capability mac_admin,
+
+    /etc/apparmor.d/ r,
+    /etc/apparmor.d/** rw,
+    /etc/apparmor/parser.conf r,
+    /proc/*/mounts r,
+    /proc/sys/kernel/osrelease r,
+    /sbin/apparmor_parser mr,
+    /sys/devices/system/cpu/ r,
+    /sys/kernel/security/apparmor/ r,
+    /sys/kernel/security/apparmor/** r,
+    /sys/kernel/security/apparmor/.replace w,
+
+  }
+
+  profile /sbin/zpool {
+    #include <abstractions/base>
+
+    /dev/zfs rw,
+    /etc/dfs/sharetab r,
+    /proc/*/mounts r,
+    /sbin/zpool mr,
+
+  }
+
+  profile /usr/bin/containerd {
+    #include <abstractions/base>
+
+    /proc/meminfo r,
+    /proc/stat r,
+    /proc/sys/net/core/somaxconn r,
+    /run/docker/libcontainerd/containerd/ r,
+    /run/docker/libcontainerd/containerd/events.log rw,
+    /run/docker/libcontainerd/docker-containerd.sock w,
+    /usr/bin/containerd mr,
+
+  }
+}
