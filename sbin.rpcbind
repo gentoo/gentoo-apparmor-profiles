@@ -1,0 +1,16 @@
+# Last Modified: Tue Feb 21 14:29:41 2017
+#include <tunables/global>
+
+/sbin/rpcbind {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/nis>
+
+  capability setgid,
+
+  /etc/netconfig r,
+  /run/rpcbind.lock rwk,
+  /run/rpcbind.sock w,
+  /sbin/rpcbind mr,
+
+}

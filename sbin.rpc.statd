@@ -1,0 +1,43 @@
+# Last Modified: Tue Feb 21 14:27:03 2017
+#include <tunables/global>
+
+# ------------------------------------------------------------------
+#
+#    Copyright (C) 2002-2005 Novell/SUSE
+#
+#    This program is free software; you can redistribute it and/or
+#    modify it under the terms of version 2 of the GNU General Public
+#    License published by the Free Software Foundation.
+#
+# ------------------------------------------------------------------
+
+
+profile rpc.statd /{usr/,}sbin/rpc.statd {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  capability chown,
+  capability setgid,
+  capability setpcap,
+  capability setuid,
+
+  /etc/netconfig r,
+  /etc/rpc r,
+  /proc/*/fd/ r,
+  /proc/sys/fs/nfs/nsm_local_state w,
+  /sm rw,
+  /sm.bak rw,
+  /state rw,
+  /var/lib/nfs/sm/ r,
+  /var/lib/nfs/sm/* rw,
+  /var/lib/nfs/statd rw,
+  /var/lib/nfs/statd/sm r,
+  /var/lib/nfs/statd/sm.bak r,
+  /var/lib/nfs/statd/sm.bak/* rwl,
+  /var/lib/nfs/statd/sm/* rwl,
+  /var/lib/nfs/statd/state rw,
+  /var/lib/nfs/state r,
+  /{,var/}run/rpc.statd.pid w,
+  /{usr/,}sbin/rpc.statd mrix,
+
+}
