@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 13:00:26 2017
+# Last Modified: Tue Feb 21 17:23:35 2017
 @{PID} = {[1-9],[1-9][0-9],[1-9][0-9][0-9],[1-9][0-9][0-9][0-9],[1-9][0-9][0-9][0-9][0-9],[1-9][0-9][0-9][0-9][0-9][0-9]}
 
 #########################################
@@ -87,7 +87,7 @@ profile firejail-default {
   /proc/@{PID}/task/ r,
   /proc/@{PID}/task/@{PID}/stat r,
   /proc/asound/card[0-9]/ r,
-  /proc/asound/card[0-9]/pcm*/ r,
+  /proc/asound/card[0-9]/** r,
   /proc/cpuinfo r,
   /proc/filesystems r,
   /proc/loadavg r,
