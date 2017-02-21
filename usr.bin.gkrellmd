@@ -30,23 +30,15 @@
   /sys/class/hwmon/ r,
   /sys/class/power_supply/ r,
   /sys/class/thermal/ r,
-  /sys/devices/**/power_supply/AC/online r,
-  /sys/devices/**/power_supply/AC/type r,
-  /sys/devices/**/power_supply/BAT0/charge_full r,
-  /sys/devices/**/power_supply/BAT0/charge_now r,
-  /sys/devices/**/power_supply/BAT0/present r,
-  /sys/devices/**/power_supply/BAT0/status r,
-  /sys/devices/**/power_supply/BAT0/type r,
+  /sys/devices/**/power_supply/AC/* r,
+  /sys/devices/**/power_supply/BAT[0-9]/* r,
   /sys/devices/platform/coretemp.[0-9]/ r,
-  /sys/devices/platform/coretemp.[0-9]/hwmon/hwmon[0-9]/ r,
-  /sys/devices/platform/coretemp.[0-9]/hwmon/hwmon[0-9]/name r,
-  /sys/devices/platform/coretemp.[0-9]/hwmon/hwmon[0-9]/temp[0-9]_input r,
-  /sys/devices/virtual/thermal/thermal_zone0/temp r,
-  /sys/devices/virtual/thermal/thermal_zone1/temp r,
+  /sys/devices/platform/coretemp.[0-9]/** r,
+  /sys/devices/virtual/thermal/thermal_zone[0-9]/temp r,
   /usr/bin/gkrellmd mr,
 
 
-  profile /bin/bash flags=(complain) {
+  profile /bin/bash {
     #include <abstractions/base>
     #include <abstractions/consoles>
     #include <abstractions/nameservice>
