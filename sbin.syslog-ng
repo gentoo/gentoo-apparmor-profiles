@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 00:05:42 2017
+# Last Modified: Tue Feb 21 11:59:32 2017
 @{CHROOT_BASE} = ""
 
 #include <tunables/global>
@@ -30,6 +30,7 @@ profile syslog-ng /{usr/,}sbin/syslog-ng {
   capability dac_read_search,
   capability fowner,
   capability fsetid,
+  capability sys_ptrace,
   capability sys_resource,
   capability sys_tty_config,
   capability syslog,

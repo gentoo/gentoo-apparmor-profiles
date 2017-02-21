@@ -1,9 +1,10 @@
-# Last Modified: Tue Feb 21 00:41:29 2017
+# Last Modified: Tue Feb 21 11:59:32 2017
 #include <tunables/global>
 
 /usr/bin/pulseaudio {
   #include <abstractions/audio>
   #include <abstractions/base>
+  #include <abstractions/consoles>
   #include <abstractions/dbus-session-strict>
   #include <abstractions/freedesktop.org>
   #include <abstractions/user-tmp>
@@ -32,10 +33,10 @@
   /tmp/** m,
   /tmp/pulse-*/ r,
   /tmp/pulse-*/autospawn.lock rwk,
+  /usr/bin/dbus-launch rix,
   /usr/bin/pulseaudio Px,
   /usr/bin/pulseaudio mr,
   /usr/share/pulseaudio/alsa-mixer/paths/* r,
   /usr/share/pulseaudio/alsa-mixer/profile-sets/* r,
   /{usr/,}lib{,32,64}/** mr,
-
 }

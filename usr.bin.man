@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 11:16:05 2017
+# Last Modified: Tue Feb 21 11:59:32 2017
 #include <tunables/global>
 
 # ------------------------------------------------------------------
@@ -29,6 +29,7 @@
   /bin/bzip2 rix,
   /etc/man.conf r,
   /etc/terminfo/** r,
+  /home/*/.lesshsQ w,
   /home/*/.lesshst r,
   /opt/**/man/man*/ r,
   /usr/bin/groff rix,
