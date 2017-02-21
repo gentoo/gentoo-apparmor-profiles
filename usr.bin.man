@@ -1,4 +1,4 @@
-# Last Modified: Mon Feb 20 00:17:40 2017
+# Last Modified: Tue Feb 21 11:12:51 2017
 #include <tunables/global>
 
 # ------------------------------------------------------------------
@@ -16,6 +16,7 @@
 
 /usr/bin/man {
   #include <abstractions/base>
+  #include <abstractions/bash>
   #include <abstractions/consoles>
   #include <abstractions/nameservice>
   #include <abstractions/user-manpages>
@@ -23,9 +24,26 @@
   capability setgid,
   capability setuid,
 
+  /bin/bash ix,
+  /bin/bash rix,
+  /bin/bzip2 rix,
   /etc/man.conf r,
+  /etc/terminfo/** r,
+  /home/*/.lesshst r,
   /opt/**/man/man*/ r,
+  /usr/bin/groff rix,
+  /usr/bin/grotty rix,
+  /usr/bin/less rix,
+  /usr/bin/locale rix,
   /usr/bin/man r,
+  /usr/bin/nroff r,
+  /usr/bin/nroff rix,
+  /usr/bin/tbl rix,
+  /usr/bin/troff rix,
   /usr/lib/man-db/man Px,
   /usr/share/**/man/man*/ r,
+  /usr/share/groff/1.22.2/font/** r,
+  /usr/share/groff/1.22.2/tmac/* r,
+  /usr/share/groff/site-tmac/* r,
+
 }
