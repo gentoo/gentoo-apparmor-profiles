@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 11:59:32 2017
+# Last Modified: Tue Feb 21 14:22:16 2017
 #include <tunables/global>
 
 /usr/bin/pulseaudio {
@@ -7,6 +7,7 @@
   #include <abstractions/consoles>
   #include <abstractions/dbus-session-strict>
   #include <abstractions/freedesktop.org>
+  #include <abstractions/nameservice>
   #include <abstractions/user-tmp>
 
   capability sys_ptrace,
@@ -18,7 +19,7 @@
   /home/*/.config/pulse/cookie rk,
   /home/*/.pulse/ r,
   /home/*/.pulse/*-runtime r,
-  /home/*/orcexec.* w,
+  /home/*/orcexec.* rw,
   /proc/*/fd/ r,
   /proc/*/stat r,
   /run/udev/data/* r,
@@ -39,4 +40,5 @@
   /usr/share/pulseaudio/alsa-mixer/paths/* r,
   /usr/share/pulseaudio/alsa-mixer/profile-sets/* r,
   /{usr/,}lib{,32,64}/** mr,
+
 }
