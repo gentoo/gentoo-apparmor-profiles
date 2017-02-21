@@ -16,4 +16,3 @@
 # alias /var/lib/mysql/ -> /home/mysql/,
 
 alias /sbin/syslog-ng -> /usr/sbin/syslog-ng,
-alias /usr/bin/okular -> /usr/local/bin/okular,

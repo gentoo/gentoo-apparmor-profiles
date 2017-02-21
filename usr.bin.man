@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 11:59:32 2017
+# Last Modified: Tue Feb 21 15:59:12 2017
 #include <tunables/global>
 
 # ------------------------------------------------------------------
@@ -32,6 +32,8 @@
   /home/*/.lesshsQ w,
   /home/*/.lesshst r,
   /opt/**/man/man*/ r,
+  /root/.lesshsQ w,
+  /root/.lesshst r,
   /usr/bin/groff rix,
   /usr/bin/grotty rix,
   /usr/bin/less rix,
