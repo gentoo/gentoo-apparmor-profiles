@@ -1,0 +1,45 @@
+# Last Modified: Tue Feb 21 15:55:51 2017
+#include <tunables/global>
+
+# ------------------------------------------------------------------
+#
+#    Copyright (C) 2002-2006 Novell/SUSE
+#
+#    This program is free software; you can redistribute it and/or
+#    modify it under the terms of version 2 of the GNU General Public
+#    License published by the Free Software Foundation.
+#
+# ------------------------------------------------------------------
+
+
+/usr/libexec/postfix/smtp {
+  #include <abstractions/base>
+  #include <abstractions/kerberosclient>
+  #include <abstractions/nameservice>
+  #include <abstractions/openssl>
+  #include <abstractions/postfix-common>
+
+  capability dac_override,
+  capability dac_read_search,
+  capability net_bind_service,
+
+  /etc/mtab r,
+  /etc/postfix/prng_exch rw,
+  /etc/postfix/sasl_passwd.db r,
+  /etc/postfix/virtual.db r,
+  /etc/postfix/{ssl/,}*.pem r,
+  /usr/libexec/postfix/smtp mrix,
+  /usr/share/ssl/certs/ca-bundle.crt r,
+  /{var/spool/postfix/,}active/** rwlk,
+  /{var/spool/postfix/,}pid/unix.relay rw,
+  /{var/spool/postfix/,}pid/unix.smtp rwk,
+  /{var/spool/postfix/,}private/anvil w,
+  /{var/spool/postfix/,}private/bounce w,
+  /{var/spool/postfix/,}private/defer w,
+  /{var/spool/postfix/,}private/rewrite w,
+  /{var/spool/postfix/,}private/scache w,
+  /{var/spool/postfix/,}private/tlsmgr w,
+  /{var/spool/postfix/,}private/trace w,
+  /{var/spool/postfix/,}public/flush w,
+
+}

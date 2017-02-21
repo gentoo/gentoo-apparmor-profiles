@@ -1,0 +1,24 @@
+# Last Modified: Tue Feb 21 16:01:21 2017
+#include <tunables/global>
+
+# ------------------------------------------------------------------
+#
+#    Copyright (C) 2002-2006 Novell/SUSE
+#
+#    This program is free software; you can redistribute it and/or
+#    modify it under the terms of version 2 of the GNU General Public
+#    License published by the Free Software Foundation.
+#
+# ------------------------------------------------------------------
+
+
+/usr/libexec/postfix/error {
+  #include <abstractions/base>
+  #include <abstractions/kerberosclient>
+  #include <abstractions/nameservice>
+  #include <abstractions/postfix-common>
+
+  /usr/libexec/postfix/error mrix,
+  /var/spool/postfix/pid/unix.retry rwk,
+
+}

@@ -1,0 +1,51 @@
+# Last Modified: Tue Feb 21 15:55:51 2017
+#include <tunables/global>
+
+# ------------------------------------------------------------------
+#
+#    Copyright (C) 2002-2006 Novell/SUSE
+#
+#    This program is free software; you can redistribute it and/or
+#    modify it under the terms of version 2 of the GNU General Public
+#    License published by the Free Software Foundation.
+#
+# ------------------------------------------------------------------
+
+
+/usr/libexec/postfix/master {
+  #include <abstractions/base>
+  #include <abstractions/kerberosclient>
+  #include <abstractions/nameservice>
+  #include <abstractions/postfix-common>
+
+  capability dac_override,
+  capability kill,
+  capability net_bind_service,
+
+  /etc/postfix/master.cf r,
+  /usr/libexec/postfix/anvil Px,
+  /usr/libexec/postfix/bounce Px,
+  /usr/libexec/postfix/cleanup Px,
+  /usr/libexec/postfix/error Px,
+  /usr/libexec/postfix/flush Px,
+  /usr/libexec/postfix/local Px,
+  /usr/libexec/postfix/master mrix,
+  /usr/libexec/postfix/master mrix,
+  /usr/libexec/postfix/nqmgr Px,
+  /usr/libexec/postfix/pickup Px,
+  /usr/libexec/postfix/pipe Px,
+  /usr/libexec/postfix/proxymap Px,
+  /usr/libexec/postfix/qmgr Px,
+  /usr/libexec/postfix/scache Px,
+  /usr/libexec/postfix/showq Px,
+  /usr/libexec/postfix/smtp Px,
+  /usr/libexec/postfix/smtpd Px,
+  /usr/libexec/postfix/tlsmgr Px,
+  /usr/libexec/postfix/trivial-rewrite Px,
+  /var/lib/postfix/master.lock rwk,
+  /{var/spool/postfix/,}pid/master.pid rwk,
+  /{var/spool/postfix/,}private/* wl,
+  /{var/spool/postfix/,}private/tlsmgr rwl,
+  /{var/spool/postfix/,}public/{cleanup,flush,pickup,qmgr,showq,tlsmgr} rwl,
+
+}
