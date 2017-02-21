@@ -1,7 +1,7 @@
-# Last Modified: Tue Feb 21 00:15:49 2017
+# Last Modified: Tue Feb 21 23:17:04 2017
 #include <tunables/global>
 
-/usr/bin/quasselclient {
+/usr/bin/quasselclient flags=(attach_disconnected) {
   #include <abstractions/audio>
   #include <abstractions/base>
   #include <abstractions/consoles>
@@ -24,7 +24,8 @@
   /home/*/.cache/qt_compose_cache_* rw,
   /home/*/.config/Trolltech.conf rk,
   /home/*/.config/fontconfig/fonts.conf r,
-  /home/*/.config/pulse/cookie rk,
+  /home/*/.config/pulse/ rw,
+  /home/*/.config/pulse/** rwk,
   /home/*/.config/quassel-irc.org/.* rwk,
   /home/*/.config/quassel-irc.org/quasselclient.conf* rwk,
   /home/*/.config/quassel-irc.org/settings.qss rwk,

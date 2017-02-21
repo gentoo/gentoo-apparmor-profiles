@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 11:09:45 2017
+# Last Modified: Tue Feb 21 23:17:04 2017
 #include <tunables/global>
 
 /usr/lib64/gstreamer-1.0/gst-plugin-scanner {
@@ -6,6 +6,7 @@
   #include <abstractions/python>
 
   /dev/ r,
+  /home/*/.cache/ w,
   /usr/lib64/gstreamer-1.0/gst-plugin-scanner mr,
 
 }

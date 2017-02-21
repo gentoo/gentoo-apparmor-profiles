@@ -1,15 +1,18 @@
-# Last Modified: Tue Feb 21 17:33:56 2017
+# Last Modified: Tue Feb 21 22:54:21 2017
 #include <tunables/global>
 
 /usr/bin/gkrellmd {
   #include <abstractions/base>
+  #include <abstractions/consoles>
   #include <abstractions/nameservice>
   #include <abstractions/wutmp>
 
   capability setgid,
   capability setuid,
 
+  / r,
   /bin/bash Cx,
+  /bin/bash mr,
   /etc/fstab r,
   /etc/gkrellmd.conf r,
   /proc/*/fd/ r,
@@ -35,6 +38,7 @@
   /sys/devices/platform/coretemp.[0-9]/ r,
   /sys/devices/platform/coretemp.[0-9]/** r,
   /sys/devices/virtual/thermal/thermal_zone[0-9]/temp r,
+  /usr/bin/eject r,
   /usr/bin/gkrellmd mr,
 
 

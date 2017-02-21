@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 16:17:42 2017
+# Last Modified: Tue Feb 21 23:40:51 2017
 #include <tunables/global>
 
 /usr/bin/pulseaudio {
@@ -16,7 +16,8 @@
   /home/ r,
   /home/*/ r,
   /home/*/.Xauthority r,
-  /home/*/.config/pulse/cookie rk,
+  /home/*/.config/pulse/ rw,
+  /home/*/.config/pulse/* rwk,
   /home/*/.pulse/ r,
   /home/*/.pulse/*-runtime r,
   /home/*/orcexec.* mrw,
