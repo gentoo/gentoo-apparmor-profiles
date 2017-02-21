@@ -1,3 +1,6 @@
+# Last Modified: Tue Feb 21 11:16:19 2017
+#include <tunables/global>
+
 # ------------------------------------------------------------------
 #
 #    Copyright (C) 2002-2005 Novell/SUSE
@@ -8,19 +11,21 @@
 #
 # ------------------------------------------------------------------
 
-#include <tunables/global>
 
 /usr/bin/apropos {
   #include <abstractions/base>
   #include <abstractions/bash>
   #include <abstractions/consoles>
-  /{usr/,}bin/basename         mixr,
-  /{usr/,}bin/bash             mixr,
-  /{usr/,}bin/grep             mixr,
-  /etc/manpath.config   r,
-  /usr/bin/apropos      rmix,
-  /usr/bin/man          Px,
-  /usr/bin/tr           mixr,
-  /var/cache/man/whatis r,
-  /var/cache/man/**     r,
+  #include <abstractions/user-manpages>
+
+  /bin/tr rix,
+  /etc/manpath.config r,
+  /usr/bin/apropos mrix,
+  /usr/bin/man Px,
+  /usr/bin/tr mrix,
+  /var/cache/man/** r,
+  /{usr/,}bin/basename mrix,
+  /{usr/,}bin/bash mrix,
+  /{usr/,}bin/grep mrix,
+
 }

@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 11:12:51 2017
+# Last Modified: Tue Feb 21 11:16:05 2017
 #include <tunables/global>
 
 # ------------------------------------------------------------------
@@ -35,7 +35,7 @@
   /usr/bin/grotty rix,
   /usr/bin/less rix,
   /usr/bin/locale rix,
-  /usr/bin/man r,
+  /usr/bin/man mr,
   /usr/bin/nroff r,
   /usr/bin/nroff rix,
   /usr/bin/tbl rix,
