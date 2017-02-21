@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 14:22:16 2017
+# Last Modified: Tue Feb 21 16:17:42 2017
 #include <tunables/global>
 
 /usr/bin/pulseaudio {
@@ -19,7 +19,7 @@
   /home/*/.config/pulse/cookie rk,
   /home/*/.pulse/ r,
   /home/*/.pulse/*-runtime r,
-  /home/*/orcexec.* rw,
+  /home/*/orcexec.* mrw,
   /proc/*/fd/ r,
   /proc/*/stat r,
   /run/udev/data/* r,
@@ -34,6 +34,7 @@
   /tmp/** m,
   /tmp/pulse-*/ r,
   /tmp/pulse-*/autospawn.lock rwk,
+  /usr/bin/dbus-daemon rix,
   /usr/bin/dbus-launch rix,
   /usr/bin/pulseaudio Px,
   /usr/bin/pulseaudio mr,

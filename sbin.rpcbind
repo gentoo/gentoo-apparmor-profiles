@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 14:36:34 2017
+# Last Modified: Tue Feb 21 16:08:15 2017
 #include <tunables/global>
 
 /sbin/rpcbind {
@@ -7,6 +7,7 @@
   #include <abstractions/nis>
 
   capability setgid,
+  capability setuid,
 
   /etc/hosts.allow r,
   /etc/netconfig r,
