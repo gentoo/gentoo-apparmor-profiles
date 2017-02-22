@@ -1,9 +1,10 @@
-# Last Modified: Tue Feb 21 23:17:04 2017
+# Last Modified: Wed Feb 22 11:03:51 2017
 #include <tunables/global>
 
 /usr/bin/quasselclient flags=(attach_disconnected) {
   #include <abstractions/audio>
   #include <abstractions/base>
+  #include <abstractions/bash>
   #include <abstractions/consoles>
   #include <abstractions/dbus-session-strict>
   #include <abstractions/fonts>
@@ -14,11 +15,13 @@
   #include <abstractions/python>
 
   / r,
+  /bin/bash ix,
   /dev/ r,
   /etc/udev/udev.conf r,
   /home/ r,
   /home/*/ r,
   /home/*/.Xauthority r,
+  /home/*/.cache/gstreamer-1.0/ w,
   /home/*/.cache/gstreamer-1.0/registry.x86_64.bin rw,
   /home/*/.cache/gstreamer-1.0/registry.x86_64.bin.tmp* rw,
   /home/*/.cache/qt_compose_cache_* rw,
@@ -44,6 +47,7 @@
   /tmp/orcexec.* m,
   /usr/bin/pulseaudio Px,
   /usr/bin/quasselclient mr,
+  /usr/bin/xdg-open rix,
   /usr/lib64/gstreamer-1.0/gst-plugin-scanner Px,
   /usr/share/apps/quassel/stylesheets/*.qss r,
   /usr/share/apps/quassel/translations/en_US.qm r,
