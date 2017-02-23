@@ -1,4 +1,4 @@
-# Last Modified: Wed Feb 22 11:03:51 2017
+# Last Modified: Thu Feb 23 12:00:27 2017
 #include <tunables/global>
 
 /usr/bin/quasselclient flags=(attach_disconnected) {
@@ -13,9 +13,9 @@
   #include <abstractions/nameservice>
   #include <abstractions/openssl>
   #include <abstractions/python>
+  #include <abstractions/ubuntu-browsers.d/plugins-common>
 
   / r,
-  /bin/bash ix,
   /dev/ r,
   /etc/udev/udev.conf r,
   /home/ r,

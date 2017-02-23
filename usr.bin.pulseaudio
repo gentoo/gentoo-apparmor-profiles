@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 23:40:51 2017
+# Last Modified: Thu Feb 23 12:00:27 2017
 #include <tunables/global>
 
 /usr/bin/pulseaudio {
@@ -39,6 +39,7 @@
   /usr/bin/dbus-launch rix,
   /usr/bin/pulseaudio Px,
   /usr/bin/pulseaudio mr,
+  /usr/share/dbus-1/session.conf r,
   /usr/share/pulseaudio/alsa-mixer/paths/* r,
   /usr/share/pulseaudio/alsa-mixer/profile-sets/* r,
   /{usr/,}lib{,32,64}/** mr,

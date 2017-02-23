@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 23:40:51 2017
+# Last Modified: Thu Feb 23 13:57:25 2017
 #include <tunables/global>
 
 # ------------------------------------------------------------------
@@ -27,6 +27,7 @@
   /bin/bash ix,
   /bin/bash rix,
   /bin/bzip2 rix,
+  /bin/cp rix,
   /etc/man.conf r,
   /etc/terminfo/** r,
   /home/*/.lesshsQ rw,
@@ -48,5 +49,6 @@
   /usr/share/groff/1.22.2/font/** r,
   /usr/share/groff/1.22.2/tmac/* r,
   /usr/share/groff/site-tmac/* r,
+  /var/cache/man/** w,
 
 }
