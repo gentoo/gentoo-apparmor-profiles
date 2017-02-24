@@ -1,4 +1,4 @@
-# Last Modified: Thu Feb 23 12:00:27 2017
+# Last Modified: Fri Feb 24 12:12:35 2017
 #include <tunables/global>
 
 /usr/bin/quasselclient flags=(attach_disconnected) {
@@ -16,6 +16,8 @@
   #include <abstractions/ubuntu-browsers.d/plugins-common>
 
   / r,
+  /bin/egrep r,
+  /bin/uname r,
   /dev/ r,
   /etc/udev/udev.conf r,
   /home/ r,
@@ -45,9 +47,11 @@
   /run/udev/data/+pci* r,
   /sys/devices/pci**/uevent r,
   /tmp/orcexec.* m,
+  /usr/bin/dbus-send r,
   /usr/bin/pulseaudio Px,
   /usr/bin/quasselclient mr,
   /usr/bin/xdg-open rix,
+  /usr/bin/xprop r,
   /usr/lib64/gstreamer-1.0/gst-plugin-scanner Px,
   /usr/share/apps/quassel/stylesheets/*.qss r,
   /usr/share/apps/quassel/translations/en_US.qm r,

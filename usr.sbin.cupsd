@@ -1,7 +1,8 @@
-# Last Modified: Tue Feb 21 14:22:17 2017
+# Last Modified: Fri Feb 24 13:18:09 2017
 #include <tunables/global>
 
 /usr/sbin/cupsd {
+  #include <abstractions/authentication>
   #include <abstractions/base>
   #include <abstractions/bash>
   #include <abstractions/dbus>
@@ -12,6 +13,7 @@
   capability dac_override,
   capability fowner,
   capability fsetid,
+  capability kill,
   capability net_bind_service,
   capability setgid,
   capability setuid,
@@ -35,19 +37,35 @@
   /etc/hosts.deny r,
   /etc/papersize r,
   /etc/printcap rw,
+  /etc/shadow rw,
   /sys/class/usb r,
   /usr/bin/foomatic-rip rix,
   /usr/bin/gs ix,
+  /usr/bin/pdftops rix,
   /usr/bin/perl ix,
   /usr/bin/smbspool rix,
   /usr/lib/cups/backend/* rix,
   /usr/lib/cups/filter/* rix,
   /usr/lib/ghostscript/** m,
   /usr/lib64/ghostscript/** m,
+  /usr/libexec/cups/backend/cups-pdf rix,
+  /usr/libexec/cups/backend/socket rix,
+  /usr/libexec/cups/cgi-bin/admin.cgi rix,
+  /usr/libexec/cups/cgi-bin/jobs.cgi rix,
+  /usr/libexec/cups/cgi-bin/printers.cgi rix,
+  /usr/libexec/cups/daemon/cups-exec rix,
+  /usr/libexec/cups/filter/pdftopdf rix,
+  /usr/libexec/cups/filter/pdftops rix,
+  /usr/libexec/cups/filter/pstops rix,
   /usr/libexec/cups/notifier/ r,
   /usr/sbin/cupsd mrix,
   /usr/share/cups/** r,
   /usr/share/ghostscript/** r,
+  /usr/share/poppler/cMap/ r,
+  /usr/share/poppler/cidToUnicode/ r,
+  /usr/share/poppler/nameToUnicode/ r,
+  /usr/share/poppler/nameToUnicode/* r,
+  /usr/share/poppler/unicodeMap/ r,
   /var/cache/cups/ rw,
   /var/cache/cups/** rw,
   /var/log/cups/ w,
@@ -55,8 +73,6 @@
   /var/spool/cups rw,
   /var/spool/cups/ r,
   /var/spool/cups/** rw,
-  /var/spool/cups/tmp w,
-  /var/spool/cups/tmp/ r,
   /{,var/}run/cups/ rw,
   /{,var/}run/cups/** rw,
   /{usr/,}bin/bash rix,

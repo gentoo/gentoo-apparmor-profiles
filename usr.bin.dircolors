@@ -1,9 +1,11 @@
-# Last Modified: Sat Feb 18 19:14:29 2017
+# Last Modified: Fri Feb 24 12:35:52 2017
 #include <tunables/global>
 
 /usr/bin/dircolors {
   #include <abstractions/base>
 
-  /usr/bin/dircolors mr,
   /etc/DIR_COLORS r,
+  /run/firejail/mnt/fslogger r,
+  /usr/bin/dircolors mr,
+
 }
