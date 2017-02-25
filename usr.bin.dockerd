@@ -1,8 +1,9 @@
-# Last Modified: Tue Feb 21 16:25:57 2017
+# Last Modified: Fri Feb 24 14:29:05 2017
 #include <tunables/global>
 
 /usr/bin/dockerd {
   #include <abstractions/base>
+  #include <abstractions/nameservice>
 
   capability chown,
   capability dac_override,
@@ -24,12 +25,14 @@
   /etc/apparmor.d/docker rw,
   /etc/apparmor/parser.conf r,
   /etc/dfs/sharetab r,
+  /etc/docker/certs.d/** r,
   /etc/docker/key.json r,
-  /etc/group r,
   /etc/modprobe.d/ r,
   /etc/modprobe.d/*.conf r,
+  /etc/resolv.conf r,
+  /etc/docker/certs.d/** r,
+  /etc/hosts r,
   /etc/os-release r,
-  /etc/passwd r,
   /proc/ r,
   /proc/*/cgroup r,
   /proc/*/fd/ r,
