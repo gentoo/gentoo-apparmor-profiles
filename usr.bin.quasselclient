@@ -1,4 +1,4 @@
-# Last Modified: Fri Feb 24 12:12:35 2017
+# Last Modified: Sun Feb 26 12:19:04 2017
 #include <tunables/global>
 
 /usr/bin/quasselclient flags=(attach_disconnected) {
@@ -19,6 +19,7 @@
   /bin/egrep r,
   /bin/uname r,
   /dev/ r,
+  /dev/dri/ r,
   /etc/udev/udev.conf r,
   /home/ r,
   /home/*/ r,
