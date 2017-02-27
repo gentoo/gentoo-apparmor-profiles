@@ -30,11 +30,7 @@
   /bin/cp rix,
   /etc/man.conf r,
   /etc/terminfo/** r,
-  /home/*/.lesshsQ rw,
-  /home/*/.lesshst rw,
   /opt/**/man/man*/ r,
-  /root/.lesshsQ rw,
-  /root/.lesshst rw,
   /usr/bin/groff rix,
   /usr/bin/grotty rix,
   /usr/bin/less rix,
@@ -50,5 +46,8 @@
   /usr/share/groff/1.22.2/tmac/* r,
   /usr/share/groff/site-tmac/* r,
   /var/cache/man/** w,
+
+  owner @{HOME}/.lesshsQ rw,
+  owner @{HOME}/.lesshst rw,
 
 }

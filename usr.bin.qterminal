@@ -14,12 +14,6 @@
   /bin/bash PUx -> /bin/bash,
   /dev/ptmx rw,
   /etc/udev/udev.conf r,
-  /home/*/.Xauthority r,
-  /home/*/.cache/qt_compose_cache_* r,
-  /home/*/.config/fontconfig/fonts.conf r,
-  /home/*/.config/qterminal.org/.* rwk,
-  /home/*/.config/qterminal.org/qterminal.ini rw,
-  /home/*/.config/qterminal.org/qterminal.ini.* rwk,
   /run/udev/data/+pci:0000:00:02.0 r,
   /sys/devices/pci0000:00/0000:00:02.0/uevent r,
   /usr/bin/qterminal mr,
@@ -31,5 +25,12 @@
   /usr/share/qtermwidget5/kb-layouts/ r,
   /usr/share/qtermwidget5/kb-layouts/*.keytab r,
   /{usr/,}lib{,32,64}/** mr,
+
+  owner @{HOME}/.Xauthority r,
+  owner @{HOME}/.cache/qt_compose_cache_* r,
+  owner @{HOME}/.config/fontconfig/fonts.conf r,
+  owner @{HOME}/.config/qterminal.org/.* rwk,
+  owner @{HOME}/.config/qterminal.org/qterminal.ini rw,
+  owner @{HOME}/.config/qterminal.org/qterminal.ini.* rwk,
 
 }
