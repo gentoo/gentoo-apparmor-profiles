@@ -1,9 +1,10 @@
-# Last Modified: Sun Feb 26 12:19:04 2017
+# Last Modified: Mon Feb 27 11:37:53 2017
 #include <tunables/global>
 
 /usr/lib64/gstreamer-1.0/gst-plugin-scanner {
   #include <abstractions/X>
   #include <abstractions/base>
+  #include <abstractions/consoles>
   #include <abstractions/python>
 
   /dev/ r,
@@ -13,6 +14,7 @@
   /home/*/.cache/ w,
   /sys/bus/ r,
   /sys/class/ r,
-  /usr/lib64/gstreamer-1.0/gst-plugin-scanner mr,
+  /sys/class/drm/ r,
+  /{usr/,}lib{,32,64}/** mr,
 
 }
