@@ -1,4 +1,4 @@
-# Last Modified: Sun Feb 26 12:19:04 2017
+# Last Modified: Mon Feb 27 11:27:00 2017
 #include <tunables/global>
 
 /usr/bin/pulseaudio {
@@ -14,7 +14,6 @@
 
   /etc/dbus-1/session.conf r,
   /etc/udev/udev.conf r,
-  /home/ r,
   /proc/*/fd/ r,
   /proc/*/stat r,
   /run/udev/data/* r,
@@ -31,6 +30,7 @@
   /usr/bin/pulseaudio Px,
   /usr/bin/pulseaudio mr,
   /usr/share/dbus-1/session.conf r,
+  /usr/share/dbus-1/session.d/ r,
   /usr/share/pulseaudio/alsa-mixer/paths/* r,
   /usr/share/pulseaudio/alsa-mixer/profile-sets/* r,
   /{usr/,}lib{,32,64}/** mr,
@@ -38,10 +38,9 @@
   owner /tmp/** m,
   owner /tmp/pulse-*/ r,
   owner /tmp/pulse-*/autospawn.lock rwk,
-
-  owner @{HOME}/.Xauthority r,
   owner @{HOME}/.config/pulse/ rw,
   owner @{HOME}/.config/pulse/* rwk,
+  owner @{HOME}/.Xauthority r,
   owner @{HOME}/.pulse/ r,
   owner @{HOME}/.pulse/*-runtime r,
   owner @{HOME}/orcexec.* mrw,

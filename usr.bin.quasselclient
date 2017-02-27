@@ -1,4 +1,4 @@
-# Last Modified: Sun Feb 26 12:19:04 2017
+# Last Modified: Mon Feb 27 11:27:00 2017
 #include <tunables/global>
 
 /usr/bin/quasselclient flags=(attach_disconnected) {
@@ -24,6 +24,7 @@
   /home/ r,
   /proc/*/fd/ r,
   /run/udev/data/+pci* r,
+  /sys/devices/pci**/config r,
   /sys/devices/pci**/uevent r,
   /tmp/orcexec.* m,
   /usr/bin/dbus-send r,
