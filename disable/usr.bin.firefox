@@ -1,0 +1,125 @@
+# Last Modified: Tue Feb 28 10:52:39 2017
+#include <tunables/global>
+
+# vim:syntax=apparmor
+# ------------------------------------------------------------------
+#
+#    Copyright (C) 2009-2011 Canonical Ltd.
+#
+#    This program is free software; you can redistribute it and/or
+#    modify it under the terms of version 2 of the GNU General Public
+#    License published by the Free Software Foundation.
+#
+# ------------------------------------------------------------------
+
+
+profile firefox /{usr/bin,opt/firefox}/firefox{,-bin} {
+  #include <abstractions/audio>
+  #include <abstractions/consoles>
+  #include <abstractions/cups-client>
+  #include <abstractions/dbus-session>
+  #include <abstractions/gnome>
+  #include <abstractions/ibus>
+  #include <abstractions/kde>
+  #include <abstractions/nameservice>
+
+  network inet stream,
+  network inet6 stream,
+
+  deny /.suspended r,
+  deny /boot/initrd.img* r,
+  deny /boot/vmlinuz* r,
+  deny /home/iceweasel/ rw,
+  deny /usr/bin/gconftool-2 x,
+  deny /usr/lib/firefox/firefox.sh x,
+  deny /usr/lib/firefox{,-[0-9]*}/** w,
+  deny /usr/lib/firefox{,-[0-9]*}/update.test w,
+  deny /usr/lib/mozilla/extensions/**/ w,
+  deny /usr/lib/xulrunner-*/components/*.tmp w,
+  deny /usr/lib/xulrunner-addons/extensions/**/ w,
+  deny /usr/lib/{firefox,xulrunner}-addons/** w,
+  deny /usr/share/mozilla/ w,
+  deny /usr/share/mozilla/extensions/**/ w,
+  deny /var/cache/fontconfig/ w,
+
+  / r,
+  /**/ r,
+  /etc/firefox*/** r,
+  /etc/fstab r,
+  /etc/gre.d/* r,
+  /etc/lsb-release r,
+  /etc/mailcap r,
+  /etc/mime.types r,
+  /etc/mtab r,
+  /etc/timezone r,
+  /etc/udev/udev.conf r,
+  /etc/wildmidi/wildmidi.cfg r,
+  /etc/xul-ext/** r,
+  /etc/xulrunner{,-[0-9]*}/** r,
+  /home/*/mozilla/.mozilla/firefox/** rwk,
+  /opt/firefox/*.so mr,
+  /opt/firefox/all-gentoo.js r,
+  /opt/firefox/browser/blocklist.xml r,
+  /opt/firefox/browser/chrome.manifest r,
+  /opt/firefox/browser/chrome/icons/**.png r,
+  /opt/firefox/browser/components/* mr,
+  /opt/firefox/browser/extensions/*.xpi r,
+  /opt/firefox/browser/features/*.xpi r,
+  /opt/firefox/browser/omni.ja r,
+  /opt/firefox/crashreporter rix,
+  /opt/firefox/defaults/pref/*.js r,
+  /opt/firefox/dependentlibs.list r,
+  /opt/firefox/firefox r,
+  /opt/firefox/fonts/** r,
+  /opt/firefox/gmp-clearkey/0.1/clearkey.info r,
+  /opt/firefox/icudt56l.dat r,
+  /opt/firefox/omni.ja r,
+  /proc/*/net/arp r,
+  /proc/*/task/*/stat r,
+  /proc/*/task/8570/stat r,
+  /proc/*/task/8627/stat r,
+  /proc/*/task/8782/stat r,
+  /proc/*/task/8887/stat r,
+  /proc/*/task/8956/stat r,
+  /run/firejail/mnt/fslogger r,
+  /run/udev/data/+pci:* r,
+  /sys/devices/**/uevent r,
+  /sys/devices/system/cpu/** r,
+  /tmp/.X[0-9]*-lock r,
+  /usr/bin/basename rix,
+  /usr/bin/dirname rix,
+  /usr/bin/expr ix,
+  /usr/bin/firefox-bin r,
+  /usr/bin/pwd rix,
+  /usr/bin/tr rix,
+  /usr/lib/firefox{,-[0-9]*}/** rix,
+  /usr/lib/xulrunner-*/plugin-container rix,
+  /usr/{include,share,src}/** r,
+  /{usr/,}bin/which rix,
+  /{usr/,}lib{,32,64}/** mr,
+  /{usr/,}sbin/killall5 rix,
+  @{PROC}/@{pid}/cmdline r,
+  @{PROC}/@{pid}/mountinfo r,
+  @{PROC}/@{pid}/net/if_inet6 r,
+  @{PROC}/@{pid}/net/ipv6_route r,
+  @{PROC}/@{pid}/stat r,
+  @{PROC}/@{pid}/status r,
+  owner /tmp/** m,
+  owner /var/tmp/** m,
+  owner @{HOME}/ r,
+  owner @{HOME}/.gnome2/firefox*-bin-* rw,
+  owner @{HOME}/.mozilla/**/extensions/** mrix,
+  owner @{HOME}/.thumbnails/*/*.png r,
+  owner @{HOME}/.{firefox,mozilla}/ rw,
+  owner @{HOME}/.{firefox,mozilla}/** rw,
+  owner @{HOME}/.{firefox,mozilla}/**/*.{db,parentlock,sqlite}* k,
+  owner @{HOME}/.{firefox,mozilla}/**/plugins/** mr,
+  owner @{HOME}/.{firefox,mozilla}/plugins/** mr,
+  owner @{HOME}/Downloads/ r,
+  owner @{HOME}/Downloads/** rw,
+  owner @{HOME}/Public/ r,
+  owner @{HOME}/Public/** r,
+  owner @{PROC}/@{pid}/auxv r,
+  owner @{PROC}/@{pid}/environ r,
+
+}
