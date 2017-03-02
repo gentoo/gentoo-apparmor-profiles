@@ -1,4 +1,4 @@
-# Last Modified: Mon Feb 27 11:37:53 2017
+# Last Modified: Tue Feb 28 10:52:39 2017
 #include <tunables/global>
 
 /usr/lib64/gstreamer-1.0/gst-plugin-scanner {
@@ -12,9 +12,13 @@
   /etc/udev/udev.conf r,
   /home/*/.Xauthority r,
   /home/*/.cache/ w,
+  /run/udev/data/+drm:card* r,
+  /run/udev/data/c226:* r,
   /sys/bus/ r,
   /sys/class/ r,
   /sys/class/drm/ r,
+  /sys/devices/**/uevent r,
+  /sys/devices/**/config r,
   /{usr/,}lib{,32,64}/** mr,
 
 }

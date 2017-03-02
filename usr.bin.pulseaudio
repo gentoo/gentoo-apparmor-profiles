@@ -1,4 +1,4 @@
-# Last Modified: Mon Feb 27 11:27:00 2017
+# Last Modified: Mon Feb 27 22:26:59 2017
 #include <tunables/global>
 
 /usr/bin/pulseaudio {
@@ -34,13 +34,12 @@
   /usr/share/pulseaudio/alsa-mixer/paths/* r,
   /usr/share/pulseaudio/alsa-mixer/profile-sets/* r,
   /{usr/,}lib{,32,64}/** mr,
-
   owner /tmp/** m,
   owner /tmp/pulse-*/ r,
   owner /tmp/pulse-*/autospawn.lock rwk,
+  owner @{HOME}/.Xauthority r,
   owner @{HOME}/.config/pulse/ rw,
   owner @{HOME}/.config/pulse/* rwk,
-  owner @{HOME}/.Xauthority r,
   owner @{HOME}/.pulse/ r,
   owner @{HOME}/.pulse/*-runtime r,
   owner @{HOME}/orcexec.* mrw,
