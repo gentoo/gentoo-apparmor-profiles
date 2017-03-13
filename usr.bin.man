@@ -1,4 +1,4 @@
-# Last Modified: Sun Feb 26 12:19:04 2017
+# Last Modified: Sun Mar 12 23:28:21 2017
 #include <tunables/global>
 
 # ------------------------------------------------------------------
@@ -31,6 +31,7 @@
   /etc/man.conf r,
   /etc/terminfo/** r,
   /opt/**/man/man*/ r,
+  /usr/bin/eqn rix,
   /usr/bin/groff rix,
   /usr/bin/grotty rix,
   /usr/bin/less rix,
@@ -46,7 +47,6 @@
   /usr/share/groff/1.22.2/tmac/* r,
   /usr/share/groff/site-tmac/* r,
   /var/cache/man/** w,
-
   owner @{HOME}/.lesshsQ rw,
   owner @{HOME}/.lesshst rw,
 

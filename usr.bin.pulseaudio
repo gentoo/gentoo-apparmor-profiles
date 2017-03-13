@@ -1,4 +1,4 @@
-# Last Modified: Mon Feb 27 22:26:59 2017
+# Last Modified: Sun Mar 12 23:28:21 2017
 #include <tunables/global>
 
 /usr/bin/pulseaudio {
@@ -13,6 +13,7 @@
   capability sys_ptrace,
 
   /etc/dbus-1/session.conf r,
+  /etc/dbus-1/session.d/ r,
   /etc/udev/udev.conf r,
   /proc/*/fd/ r,
   /proc/*/stat r,
