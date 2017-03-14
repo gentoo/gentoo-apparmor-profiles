@@ -1,4 +1,4 @@
-# Last Modified: Sun Mar 12 23:28:21 2017
+# Last Modified: Tue Mar 14 10:18:39 2017
 #include <tunables/global>
 
 # ------------------------------------------------------------------
@@ -41,12 +41,14 @@
   /usr/bin/nroff rix,
   /usr/bin/tbl rix,
   /usr/bin/troff rix,
+  /usr/bin/xz rix,
   /usr/lib/man-db/man Px,
   /usr/share/**/man/man*/ r,
   /usr/share/groff/1.22.2/font/** r,
   /usr/share/groff/1.22.2/tmac/* r,
+  /usr/share/groff/1.22.2/tmac/mdoc/* r,
   /usr/share/groff/site-tmac/* r,
-  /var/cache/man/** w,
+  /var/cache/man/** rw,
   owner @{HOME}/.lesshsQ rw,
   owner @{HOME}/.lesshst rw,
 
