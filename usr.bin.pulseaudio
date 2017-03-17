@@ -1,4 +1,4 @@
-# Last Modified: Wed Mar 15 19:46:43 2017
+# Last Modified: Fri Mar 17 10:11:48 2017
 #include <tunables/global>
 
 /usr/bin/pulseaudio {
@@ -16,6 +16,7 @@
   /etc/dbus-1/session.d/ r,
   /etc/udev/udev.conf r,
   /home/*/.dbus/session-bus/* w,
+  /proc/*/cmdline r,
   /proc/*/fd/ r,
   /proc/*/stat r,
   /run/udev/data/* r,
@@ -32,6 +33,7 @@
   /usr/bin/pulseaudio Px,
   /usr/bin/pulseaudio mr,
   /usr/share/dbus-1/services/ r,
+  /usr/share/dbus-1/services/* r,
   /usr/share/dbus-1/session.conf r,
   /usr/share/dbus-1/session.d/ r,
   /usr/share/pulseaudio/alsa-mixer/paths/* r,
