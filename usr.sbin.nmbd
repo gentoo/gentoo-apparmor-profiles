@@ -1,30 +1,28 @@
+# Last Modified: Sat Mar 18 13:07:07 2017
 #include <tunables/global>
 
 /usr/sbin/nmbd {
   #include <abstractions/base>
   #include <abstractions/nameservice>
   #include <abstractions/samba>
+  #include <local/usr.sbin.nmbd>
 
   capability net_bind_service,
 
-  @{PROC}/sys/kernel/core_pattern r,
-
   /usr/sbin/nmbd mr,
-
   /var/cache/samba/gencache.tdb rwk,
+  /var/cache/samba/msg/ rw,
+  /var/cache/samba/msg/* w,
   /var/{cache,lib}/samba/browse.dat* rw,
   /var/{cache,lib}/samba/gencache.dat rw,
-  /var/{cache,lib}/samba/wins.dat* rw,
   /var/{cache,lib}/samba/smb_krb5/ rw,
   /var/{cache,lib}/samba/smb_krb5/krb5.conf* rw,
   /var/{cache,lib}/samba/smb_tmp_krb5.* rw,
   /var/{cache,lib}/samba/sync.* rw,
   /var/{cache,lib}/samba/unexpected rw,
-  /var/cache/samba/msg/ rw,
-  /var/cache/samba/msg/* w,
-
+  /var/{cache,lib}/samba/wins.dat* rw,
+  /{,var/}run/lock/samba/** rwk,
   /{,var/}run/samba/** rwk,
+  @{PROC}/sys/kernel/core_pattern r,
 
-  # Site-specific additions and overrides. See local/README for details.
-  #include <local/usr.sbin.nmbd>
 }
