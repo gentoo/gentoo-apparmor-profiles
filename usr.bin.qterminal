@@ -1,4 +1,4 @@
-# Last Modified: Mon Feb 20 12:16:16 2017
+# Last Modified: Sun Mar 19 22:11:58 2017
 #include <tunables/global>
 
 /usr/bin/qterminal {
@@ -25,9 +25,8 @@
   /usr/share/qtermwidget5/kb-layouts/ r,
   /usr/share/qtermwidget5/kb-layouts/*.keytab r,
   /{usr/,}lib{,32,64}/** mr,
-
   owner @{HOME}/.Xauthority r,
-  owner @{HOME}/.cache/qt_compose_cache_* r,
+  owner @{HOME}/.cache/qt_compose_cache_* rw,
   owner @{HOME}/.config/fontconfig/fonts.conf r,
   owner @{HOME}/.config/qterminal.org/.* rwk,
   owner @{HOME}/.config/qterminal.org/qterminal.ini rw,
