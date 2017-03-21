@@ -1,4 +1,4 @@
-# Last Modified: Fri Feb 24 13:18:09 2017
+# Last Modified: Mon Mar 20 11:31:13 2017
 #include <tunables/global>
 
 /usr/sbin/cupsd {
@@ -53,6 +53,7 @@
   /usr/libexec/cups/cgi-bin/admin.cgi rix,
   /usr/libexec/cups/cgi-bin/jobs.cgi rix,
   /usr/libexec/cups/cgi-bin/printers.cgi rix,
+  /usr/libexec/cups/daemon/cups-driverd rix,
   /usr/libexec/cups/daemon/cups-exec rix,
   /usr/libexec/cups/filter/pdftopdf rix,
   /usr/libexec/cups/filter/pdftops rix,

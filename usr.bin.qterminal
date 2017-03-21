@@ -1,4 +1,4 @@
-# Last Modified: Sun Mar 19 22:11:58 2017
+# Last Modified: Mon Mar 20 11:40:06 2017
 #include <tunables/global>
 
 /usr/bin/qterminal {
@@ -12,10 +12,12 @@
   capability sys_ptrace,
 
   /bin/bash PUx -> /bin/bash,
+  /dev/dri/ r,
   /dev/ptmx rw,
   /etc/udev/udev.conf r,
-  /run/udev/data/+pci:0000:00:02.0 r,
-  /sys/devices/pci0000:00/0000:00:02.0/uevent r,
+  /run/udev/data/+pci:* r,
+  /sys/devices/**/config r,
+  /sys/devices/**/uevent r,
   /usr/bin/qterminal mr,
   /usr/bin/xdg-open r,
   /usr/share/cursors/** r,
@@ -31,5 +33,6 @@
   owner @{HOME}/.config/qterminal.org/.* rwk,
   owner @{HOME}/.config/qterminal.org/qterminal.ini rw,
   owner @{HOME}/.config/qterminal.org/qterminal.ini.* rwk,
+  /home/*/.cache/qt_compose_cache_* rw,
 
 }
