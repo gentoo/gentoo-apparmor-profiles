@@ -50,6 +50,7 @@
   /dev/ptmx rw,
   /dev/pts/[0-9]* rw,
   /dev/urandom r,
+  /dev/net/tun rw,
   /etc/default/locale r,
   /etc/environment r,
   /etc/hosts.allow r,

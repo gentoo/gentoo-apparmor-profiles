@@ -73,6 +73,7 @@
   # Send signals to all hats.
   signal (send) peer=@{profile_name}//*,
 
+  capability chown,
   capability dac_override,
   capability kill,
   capability net_bind_service,
