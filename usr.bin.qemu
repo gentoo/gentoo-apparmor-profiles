@@ -1,4 +1,4 @@
-# Last Modified: Sat Mar 18 18:12:53 2017
+# Last Modified: Wed Mar 22 17:49:52 2017
 #include <tunables/global>
 
 profile qemu /usr/bin/qemu-{,system}-{i386,x86_64} {
@@ -7,11 +7,11 @@ profile qemu /usr/bin/qemu-{,system}-{i386,x86_64} {
   #include <abstractions/nameservice>
 
   /dev/kvm rw,
-  /home/**.img r,
-  /home/*/.Xauthority r,
+  /home/**.img rw,
   /usr/bin/qemu-system-x86_64 mr,
   /usr/share/qemu/** r,
   /usr/share/vgabios/*.bin r,
   /var/tmp/* rw,
+  owner @{HOME}/.Xauthority r,
 
 }
