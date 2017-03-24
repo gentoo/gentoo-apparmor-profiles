@@ -81,23 +81,23 @@
   capability setuid,
   capability sys_tty_config,
 
-  / rw,
-  /** mrwlkix,
+  @{DATA_WWW}/ rw,
+  @{DATA_WWW}/** mrwlkix,
 
 
   ^DEFAULT_URI {
     #include <abstractions/base>
     #include <abstractions/apache2-common>
 
-    / rw,
-    /** mrwlkix,
+    @{DATA_WWW}/ rw,
+    @{DATA_WWW}/** mrwlkix,
   }
 
   ^HANDLING_UNTRUSTED_INPUT {
     #include <abstractions/apache2-common>
 
-    / rw,
-    /** mrwlkix,
+    @{DATA_WWW}/ rw,
+    @{DATA_WWW}/** mrwlkix,
   }
 
   # This directory contains web application
