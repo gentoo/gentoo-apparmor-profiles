@@ -1,4 +1,4 @@
-# Last Modified: Fri Feb 24 14:29:05 2017
+# Last Modified: Fri Mar 24 20:13:45 2017
 #include <tunables/global>
 
 /usr/bin/dockerd {
@@ -18,6 +18,13 @@
   /.pivot_root*/ w,
   /bin/kmod mr,
   /bin/kmod rix,
+  /data.stage/docker/git/** r,
+  /data.stage/docker/local/ w,
+  /data.stage/docker/local/** rwk,
+  /dev/dm-1 r,
+  /dev/loop-control r,
+  /dev/loop* rw,
+  /dev/mapper/control rw,
   /dev/zfs rw,
   /etc/apparmor.d/ r,
   /etc/apparmor.d/cache/ r,
@@ -26,13 +33,14 @@
   /etc/apparmor/parser.conf r,
   /etc/dfs/sharetab r,
   /etc/docker/certs.d/** r,
+  /etc/docker/certs.d/** r,
   /etc/docker/key.json r,
+  /etc/hosts r,
   /etc/modprobe.d/ r,
   /etc/modprobe.d/*.conf r,
-  /etc/resolv.conf r,
-  /etc/docker/certs.d/** r,
-  /etc/hosts r,
   /etc/os-release r,
+  /etc/resolv.conf r,
+  /etc/udev/udev.conf r,
   /proc/ r,
   /proc/*/cgroup r,
   /proc/*/fd/ r,
@@ -41,6 +49,7 @@
   /proc/*/net/ip_tables_names r,
   /proc/*/oom_score_adj w,
   /proc/cmdline r,
+  /proc/devices r,
   /proc/stat r,
   /proc/sys/kernel/cap_last_cap r,
   /proc/sys/kernel/hostname r,
@@ -52,22 +61,28 @@
   /proc/sys/net/core/somaxconn r,
   /proc/sys/net/ipv4/ip_forward rw,
   /proc/sys/net/ipv4/ip_local_port_range r,
+  /run/blkid/ w,
+  /run/blkid/* rwl,
   /run/docker.pid w,
   /run/docker.sock w,
   /run/docker/ rw,
   /run/docker/** rw,
   /sbin/apparmor_parser Cx,
   /sbin/apparmor_parser mr,
+  /sbin/blkid Cx,
   /sbin/xtables-multi mr,
   /sbin/xtables-multi rix,
   /sbin/zfs mr,
   /sbin/zfs rix,
   /sbin/zpool Cx,
   /sys/devices/system/cpu/ r,
+  /sys/devices/virtual/block/dm-** r,
   /sys/fs/cgroup/cpuset/cpuset.cpus r,
   /sys/fs/cgroup/cpuset/cpuset.mems r,
+  /sys/kernel/security/apparmor/profiles r,
   /sys/module/apparmor/parameters/enabled r,
   /sys/module/bridge/initstate r,
+  /sys/module/ipv6/initstate r,
   /sys/module/llc/initstate r,
   /sys/module/nf_conntrack/initstate r,
   /sys/module/nf_nat/initstate r,
@@ -80,6 +95,8 @@
   /usr/bin/containerd Cx,
   /usr/bin/dockerd mr,
   /usr/bin/dockerd rix,
+  /usr/bin/runc rix,
+  /usr/bin/tini rix,
   /var/cache/docker/ w,
   /var/cache/docker/** rwk,
 
@@ -99,6 +116,17 @@
     /sys/kernel/security/apparmor/ r,
     /sys/kernel/security/apparmor/** r,
     /sys/kernel/security/apparmor/.replace w,
+
+  }
+
+  profile /sbin/blkid {
+    #include <abstractions/base>
+
+    /dev/dm-* r,
+    /run/blkid/* rwl,
+    /sbin/blkid mr,
+    /sys/devices/virtual/block/dm-*/ r,
+    /sys/devices/virtual/block/dm-*/dm/uuid r,
 
   }
 

@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 11:59:32 2017
+# Last Modified: Fri Mar 24 19:52:37 2017
 @{CHROOT_BASE} = ""
 
 #include <tunables/global>
@@ -41,6 +41,7 @@ profile syslog-ng /{usr/,}sbin/syslog-ng {
   /dev/log w,
   /dev/syslog w,
   /dev/tty10 rw,
+  /dev/tty12 rw,
   /dev/xconsole rw,
   /etc/hosts.allow r,
   /etc/hosts.deny r,
@@ -52,6 +53,7 @@ profile syslog-ng /{usr/,}sbin/syslog-ng {
   /proc/*/loginuid r,
   /proc/*/sessionid r,
   /sys/devices/system/cpu/online r,
+  /usr/share/include/scl/ r,
   /usr/share/syslog-ng/** r,
   /var/lib/syslog-ng/syslog-ng-?????.qf rw,
   /{usr/,}sbin/syslog-ng mr,
