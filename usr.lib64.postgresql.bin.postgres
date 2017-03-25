@@ -1,0 +1,18 @@
+# Last Modified: Sat Mar 25 14:34:52 2017
+#include <tunables/global>
+
+profile postgresql /usr/lib64/postgresql-*/bin/postgres {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  /data.www/postgresql/** rw,
+  /dev/shm/PostgreSQL.* rw,
+  /etc/postgresql-*/pg_hba.conf r,
+  /etc/postgresql-*/postgresql.conf r,
+  /etc/postgresql-*/pg_ident.conf r,
+  /run/postgresql/* w,
+  /run/postgresql/*.lock rw,
+  /usr/lib64/postgresql-*/bin/postgres mr,
+  /usr/share/postgresql-*/** r,
+
+}
