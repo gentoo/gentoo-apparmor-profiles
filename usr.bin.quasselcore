@@ -1,0 +1,15 @@
+# Last Modified: Sat Mar 25 12:44:17 2017
+#include <tunables/global>
+
+/usr/bin/quasselcore {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/ssl_certs>
+
+  /data.www/quassel/quasselCert.pem r,
+  /data.www/quassel/quasselcore.conf rk,
+  /usr/bin/quasselcore mr,
+  /var/lib/quassel/.config/Trolltech.conf rk,
+  /var/log/quassel.log w,
+
+}
