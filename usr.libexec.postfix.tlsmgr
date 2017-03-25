@@ -1,4 +1,4 @@
-# Last Modified: Sat Mar 25 12:07:12 2017
+# Last Modified: Sat Mar 25 12:12:13 2017
 #include <tunables/global>
 
 # ------------------------------------------------------------------
@@ -21,7 +21,7 @@
   /etc/postfix/prng_exch rw,
   /usr/libexec/postfix/tlsmgr mrix,
   /var/lib/postfix/prng_exch rwk,
-  /var/lib/postfix/smtp_scache.db rw,
+  /var/lib/postfix/smtp_scache.db rwk,
   /{,var/}run/__db.smtpd_tls_session_cache.db rw,
   /{,var/}run/smtpd_tls_session_cache.db rw,
   /{var/spool/postfix/,}private/tlsmgr r,
