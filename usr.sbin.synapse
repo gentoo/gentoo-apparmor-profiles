@@ -1,0 +1,56 @@
+# Last Modified: Sat Mar 25 23:57:51 2017
+#include <tunables/global>
+
+# Note: This profile needs that Synapse gets started with `aa-exec -p synapse synctrl start`
+
+profile synapse {
+  #include <abstractions/base>
+  #include <abstractions/consoles>
+  #include <abstractions/nameservice>
+  #include <abstractions/python>
+
+  /etc/env.d/python/config r,
+  /etc/python-exec/python-exec.conf r,
+  /etc/synapse/homeserver.yaml r,
+  /usr/bin/python2.7 mrCx,
+  /usr/lib64/python-exec/python2.7/synctl ix,
+  /{,var/}run/lock/synapse/** rwk,
+  /{,var/}run/synapse/** rwk,
+  /{,var/}run/synapse/homeserver.pid wk,
+
+
+  profile /usr/bin/python2.7 {
+    #include <abstractions/base>
+    #include <abstractions/consoles>
+    #include <abstractions/nameservice>
+    #include <abstractions/python>
+
+    @{PROC}/@{PID}/mounts r,
+    @{PROC}/@{PID}/stat r,
+    @{PROC}/@{PID}/statm r,
+    @{PROC}/@{PID}/status r,
+
+    @{DATA_WWW}/letsencrypt/ssl/certs/matrix.darkchannel.net.crt r,
+    @{DATA_WWW}/letsencrypt/ssl/priv/matrix.darkchannel.net.pem r,
+    @{DATA_WWW}/synapse/ r,
+    @{DATA_WWW}/synapse/** rwk,
+
+    / r,
+    /etc/mime.types r,
+    /etc/synapse/homeserver-logging.yaml r,
+    /etc/synapse/homeserver.yaml r,
+    /etc/synapse/keys/* r,
+    /{,var/}run/synapse/homeserver.pid rwk,
+    /var/lib/synapse/ r,
+    /var/lib/synapse/* rw,
+    /var/log/synapse/synapse.log w,
+    /tmp/* rw,
+    /var/tmp/* rw,
+
+    /bin/bash rix,
+    /sbin/ldconfig rix,
+    /usr/bin/git rix,
+    /usr/bin/python2.7 mr,
+
+  }
+}
