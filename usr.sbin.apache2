@@ -145,6 +145,8 @@
 
     /tmp/.ZendSem.* rwk,
     /var/log/apache2/*.log w,
+
+    /run/apache_ssl_mutex/ssl-cache.* rwk,
   }
 
   # This directory contains web application
