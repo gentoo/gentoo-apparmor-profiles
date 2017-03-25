@@ -1,0 +1,21 @@
+# Last Modified: Sun Mar 26 00:28:20 2017
+#include <tunables/global>
+
+/usr/bin/turnserver {
+  #include <abstractions/base>
+
+  /sys/devices/system/cpu/ r,
+
+  /usr/bin/turnserver mr,
+
+  /etc/synapse/keys/matrix.darkchannel.net.tls.dh r,
+  /etc/turnserver.conf r,
+
+  /var/log/turn/turn_*.log rw,
+  /var/log/turn_*.log w,
+  /var/tmp/turn_*.log w,
+  /{var/,}run/turnserver/turnserver.pid w,
+
+  @{DATA_WWW}/letsencrypt/ssl/certs/matrix.darkchannel.net.crt r,
+
+}
