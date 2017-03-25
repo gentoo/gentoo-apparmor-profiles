@@ -1,0 +1,22 @@
+# Last Modified: Sat Mar 25 14:26:10 2017
+#include <tunables/global>
+
+profile php-fpm /usr/lib64/php*/bin/php-fpm {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/openssl>
+  #include <abstractions/php>
+
+  capability kill,
+  capability setgid,
+  capability setuid,
+
+  /etc/php/fpm-php*/fpm.d/www.conf r,
+  /etc/php/fpm-php*/php-fpm.conf r,
+
+  /run/php-fpm.pid w,
+  /var/log/php-fpm.log w,
+
+  /{usr/,}lib{,32,64}/** mr,
+
+}
