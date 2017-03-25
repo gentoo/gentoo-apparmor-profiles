@@ -1,4 +1,4 @@
-# Last Modified: Sat Mar 25 12:00:44 2017
+# Last Modified: Sat Mar 25 12:07:12 2017
 #include <tunables/global>
 
 /usr/bin/dockerd {
@@ -16,6 +16,7 @@
 
   / r,
   /.pivot_root*/ w,
+  /Dockerfile w,
   /bin/kmod mr,
   /bin/kmod rix,
   /data.stage/docker/git/** r,
@@ -41,27 +42,6 @@
   /etc/os-release r,
   /etc/resolv.conf r,
   /etc/udev/udev.conf r,
-  @{PROC}/ r,
-  @{PROC}/*/cgroup r,
-  @{PROC}/*/fd/ r,
-  @{PROC}/*/mountinfo r,
-  @{PROC}/*/mounts r,
-  @{PROC}/*/net/ip_tables_names r,
-  @{PROC}/*/oom_score_adj w,
-  @{PROC}/*/uid_map r,
-  @{PROC}/cmdline r,
-  @{PROC}/devices r,
-  @{PROC}/stat r,
-  @{PROC}/sys/kernel/cap_last_cap r,
-  @{PROC}/sys/kernel/hostname r,
-  @{PROC}/sys/kernel/keys/root_maxkeys r,
-  @{PROC}/sys/kernel/modprobe r,
-  @{PROC}/sys/kernel/threads-max r,
-  @{PROC}/sys/net/bridge/bridge-nf-call-ip6tables r,
-  @{PROC}/sys/net/bridge/bridge-nf-call-iptables r,
-  @{PROC}/sys/net/core/somaxconn r,
-  @{PROC}/sys/net/ipv4/ip_forward rw,
-  @{PROC}/sys/net/ipv4/ip_local_port_range r,
   /run/blkid/ w,
   /run/blkid/* rwl,
   /run/docker.pid w,
@@ -100,7 +80,27 @@
   /usr/bin/tini rix,
   /var/cache/docker/ w,
   /var/cache/docker/** rwk,
-
+  @{PROC}/ r,
+  @{PROC}/*/cgroup r,
+  @{PROC}/*/fd/ r,
+  @{PROC}/*/mountinfo r,
+  @{PROC}/*/mounts r,
+  @{PROC}/*/net/ip_tables_names r,
+  @{PROC}/*/oom_score_adj w,
+  @{PROC}/*/uid_map r,
+  @{PROC}/cmdline r,
+  @{PROC}/devices r,
+  @{PROC}/stat r,
+  @{PROC}/sys/kernel/cap_last_cap r,
+  @{PROC}/sys/kernel/hostname r,
+  @{PROC}/sys/kernel/keys/root_maxkeys r,
+  @{PROC}/sys/kernel/modprobe r,
+  @{PROC}/sys/kernel/threads-max r,
+  @{PROC}/sys/net/bridge/bridge-nf-call-ip6tables r,
+  @{PROC}/sys/net/bridge/bridge-nf-call-iptables r,
+  @{PROC}/sys/net/core/somaxconn r,
+  @{PROC}/sys/net/ipv4/ip_forward rw,
+  @{PROC}/sys/net/ipv4/ip_local_port_range r,
 
   profile /sbin/apparmor_parser {
     #include <abstractions/base>
@@ -110,13 +110,13 @@
     /etc/apparmor.d/ r,
     /etc/apparmor.d/** rw,
     /etc/apparmor/parser.conf r,
-    @{PROC}/*/mounts r,
-    @{PROC}/sys/kernel/osrelease r,
     /sbin/apparmor_parser mr,
     /sys/devices/system/cpu/ r,
     /sys/kernel/security/apparmor/ r,
     /sys/kernel/security/apparmor/** r,
     /sys/kernel/security/apparmor/.replace w,
+    @{PROC}/*/mounts r,
+    @{PROC}/sys/kernel/osrelease r,
 
   }
 
@@ -136,20 +136,20 @@
 
     /dev/zfs rw,
     /etc/dfs/sharetab r,
-    @{PROC}/*/mounts r,
     /sbin/zpool mr,
+    @{PROC}/*/mounts r,
 
   }
 
   profile /usr/bin/containerd {
     #include <abstractions/base>
 
-    @{PROC}/meminfo r,
-    @{PROC}/stat r,
-    @{PROC}/sys/net/core/somaxconn r,
     /run/docker/libcontainerd/ rw,
     /run/docker/libcontainerd/** rw,
     /usr/bin/containerd mr,
+    @{PROC}/meminfo r,
+    @{PROC}/stat r,
+    @{PROC}/sys/net/core/somaxconn r,
 
   }
 }
