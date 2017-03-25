@@ -1,16 +1,9 @@
-# Last Modified: Mon Mar  6 15:57:42 2017
-@{PID} = {[1-9],[1-9][0-9],[1-9][0-9][0-9],[1-9][0-9][0-9][0-9],[1-9][0-9][0-9][0-9][0-9],[1-9][0-9][0-9][0-9][0-9][0-9]}
+# Last Modified: Sat Mar 25 13:38:15 2017
+#include <tunables/global>
 
 #########################################
 # Generic Firejail AppArmor profile
 #########################################
-##########
-# A simple PID declaration based on Ubuntu's @{pid}
-# Ubuntu keeps it under tunables/kernelvars and include it via tunables/global.
-# We don't know if this definition is available outside Debian and Ubuntu, so
-# we declare our own here.
-##########
-
 
 profile firejail-default {
   #include <abstractions/consoles>
@@ -69,6 +62,13 @@ profile firejail-default {
   /bin/** ix,
   /lib/** ix,
   /lib64/** ix,
+  /usr/bin/** ix,
+  /usr/games/** ix,
+  /usr/lib/** ix,
+  /usr/lib64/gstreamer-1.0/gst-plugin-scanner Px,
+  /usr/lib64/kde4/libexec/lnusertemp ix,
+  /usr/local/** ix,
+  /usr/sbin/** ix,
   /opt/ r,
   /opt/** ix,
   /opt/** r,
@@ -76,36 +76,39 @@ profile firejail-default {
   /opt/firefox/update.test/ rw,
   /opt/thunderbird/update.test rw,
   /opt/thunderbird/update.test/ rw,
-  /proc/ r,
-  /proc/*/auxv r,
-  /proc/*/net/arp r,
-  /proc/*/net/route r,
-  /proc/@{PID}/ r,
-  /proc/@{PID}/cmdline r,
-  /proc/@{PID}/comm r,
-  /proc/@{PID}/fd/ r,
-  /proc/@{PID}/maps r,
-  /proc/@{PID}/mountinfo r,
-  /proc/@{PID}/mounts r,
-  /proc/@{PID}/oom_score_adj r,
-  /proc/@{PID}/stat r,
-  /proc/@{PID}/statm r,
-  /proc/@{PID}/status r,
-  /proc/@{PID}/task/ r,
-  /proc/@{PID}/task/@{PID}/stat r,
-  /proc/asound/card[0-9]/ r,
-  /proc/asound/card[0-9]/** r,
-  /proc/cpuinfo r,
-  /proc/filesystems r,
-  /proc/loadavg r,
-  /proc/meminfo r,
-  /proc/stat r,
-  /proc/sys/kernel/osrelease r,
-  /proc/sys/kernel/pid_max r,
-  /proc/sys/kernel/shmmax r,
-  /proc/sys/vm/overcommit_memory r,
-  /proc/sys/vm/overcommit_ratio r,
-  /proc/uptime r,
+
+  @{PROC}/ r,
+  @{PROC}/@{PID}/auxv r,
+  @{PROC}/@{PID}/net/arp r,
+  @{PROC}/@{PID}/net/route r,
+  @{PROC}/@{PID}/task/*/comm rw,
+  @{PROC}/@{PID}/ r,
+  @{PROC}/@{PID}/cmdline r,
+  @{PROC}/@{PID}/comm r,
+  @{PROC}/@{PID}/fd/ r,
+  @{PROC}/@{PID}/maps r,
+  @{PROC}/@{PID}/mountinfo r,
+  @{PROC}/@{PID}/mounts r,
+  @{PROC}/@{PID}/oom_score_adj r,
+  @{PROC}/@{PID}/stat r,
+  @{PROC}/@{PID}/statm r,
+  @{PROC}/@{PID}/status r,
+  @{PROC}/@{PID}/task/ r,
+  @{PROC}/@{PID}/task/@{PID}/stat r,
+  @{PROC}/asound/card[0-9]/ r,
+  @{PROC}/asound/card[0-9]/** r,
+  @{PROC}/cpuinfo r,
+  @{PROC}/filesystems r,
+  @{PROC}/loadavg r,
+  @{PROC}/meminfo r,
+  @{PROC}/stat r,
+  @{PROC}/sys/kernel/osrelease r,
+  @{PROC}/sys/kernel/pid_max r,
+  @{PROC}/sys/kernel/shmmax r,
+  @{PROC}/sys/vm/overcommit_memory r,
+  @{PROC}/sys/vm/overcommit_ratio r,
+  @{PROC}/uptime r,
+
   /sbin/** ix,
   /sys/ r,
   /sys/bus/ r,
@@ -114,13 +117,7 @@ profile firejail-default {
   /sys/class/** r,
   /sys/devices/ r,
   /sys/devices/** r,
-  /usr/bin/** ix,
-  /usr/games/** ix,
-  /usr/lib/** ix,
-  /usr/lib64/gstreamer-1.0/gst-plugin-scanner Px,
-  /usr/lib64/kde4/libexec/lnusertemp ix,
-  /usr/local/** ix,
-  /usr/sbin/** ix,
+
   /{,var/}run/ r,
   /{,var/}run/** r,
   /{,var/}run/firejail/appimage r,
