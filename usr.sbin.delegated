@@ -1,4 +1,4 @@
-# Last Modified: Sat Mar 25 14:20:26 2017
+# Last Modified: Sat Mar 25 15:02:44 2017
 #include <tunables/global>
 
 /usr/sbin/delegated {
@@ -12,6 +12,7 @@
   capability setgid,
   capability setuid,
 
+  /data.www/proxy/ r,
   /data.www/proxy/** w,
   /etc/delegate/*.conf r,
   /run/delegated/*.pid rw,
