@@ -40,8 +40,8 @@ profile syslog-ng /{usr/,}sbin/syslog-ng {
 
   /dev/log w,
   /dev/syslog w,
-  /dev/tty10 rw,
-  /dev/tty12 rw,
+  /dev/tty10 rwk,
+  /dev/tty12 rwk,
   /dev/xconsole rw,
   /etc/hosts.allow r,
   /etc/hosts.deny r,

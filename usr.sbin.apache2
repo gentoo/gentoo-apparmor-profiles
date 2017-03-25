@@ -1,4 +1,5 @@
 # Author: Marc Deslauriers <marc.deslauriers@ubuntu.com>
+@{PID} = {[1-9],[1-9][0-9],[1-9][0-9][0-9],[1-9][0-9][0-9][0-9],[1-9][0-9][0-9][0-9][0-9],[1-9][0-9][0-9][0-9][0-9][0-9]}
 
 #include <tunables/global>
 /usr/sbin/apache2 {
@@ -84,20 +85,68 @@
   @{DATA_WWW}/ rw,
   @{DATA_WWW}/** mrwlkix,
 
+  /etc/apache2/httpd.conf r,
+  /etc/apache2/vhosts.d/ r,
+  /etc/apache2/vhosts.d/** r,
+  /etc/apache2/modules.d/ r,
+  /etc/apache2/modules.d/** r,
+  /etc/apache2/magic r,
+  /etc/mime.types r,
+
+  /run/apache2.pid rw,
+  /run/cgisock.* rw,
+  /run/apache_ssl_mutex/* rwk,
+
+  /etc/ssl/openssl.cnf r,
+
+  /etc/php/*/php.ini r,
+  /etc/php/*/ext-active/ r,
+  /etc/php/*/ext/opcache.ini r,
+
+  /proc/@{PID}/attr/current rw,
+
+  /dev/tty rw,
+
+  /var/lib/eselect-php/mod_php.conf r,
+  /var/log/apache2/* rw,
+
+  /{usr/,}lib{,32,64}/** mr,
+
+  /tmp/.ZendSem.* rwk,
 
   ^DEFAULT_URI {
     #include <abstractions/base>
     #include <abstractions/apache2-common>
 
-    @{DATA_WWW}/ rw,
-    @{DATA_WWW}/** mrwlkix,
+    /dev/tty rw,
+
+    #@{DATA_WWW}/ rw,
+    #@{DATA_WWW}/** mrwlkix,
+
+    @{DATA_WWW}/ r,
+    @{DATA_WWW}/** mrix,
+
+    /tmp/.ZendSem.* rwk,
+
+    /var/log/apache2/*.log w,
+
   }
 
   ^HANDLING_UNTRUSTED_INPUT {
     #include <abstractions/apache2-common>
 
+    /dev/tty rw,
+
+    @{PROC}/sys/vm/overcommit_memory r,
+
+    /var/log/apache2/* rw,
+    /run/apache_ssl_mutex/* rwk,
+
+    /etc/ld.so.cache r,
     @{DATA_WWW}/ rw,
     @{DATA_WWW}/** mrwlkix,
+
+    /tmp/.ZendSem.* rwk,
   }
 
   # This directory contains web application
