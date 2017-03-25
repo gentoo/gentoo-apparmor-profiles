@@ -1,0 +1,25 @@
+# Last Modified: Sat Mar 25 14:20:26 2017
+#include <tunables/global>
+
+/usr/sbin/delegated {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  capability chown,
+  capability dac_override,
+  capability fowner,
+  capability fsetid,
+  capability setgid,
+  capability setuid,
+
+  /data.www/proxy/** w,
+  /etc/delegate/*.conf r,
+  /run/delegated/*.pid rw,
+  /tmp/* w,
+  /tmp/tmp* rw,
+  /usr/sbin/delegated mr,
+  /usr/sbin/delegated rix,
+  /var/empty/delegate/** rwk,
+  /var/log/delegate-*.log wk,
+
+}
