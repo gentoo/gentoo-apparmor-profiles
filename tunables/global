@@ -15,6 +15,7 @@
 #include <tunables/home>
 #include <tunables/multiarch>
 #include <tunables/proc>
+#include <tunables/pid>
 #include <tunables/alias>
 #include <tunables/kernelvars>
 #include <tunables/xdg-user-dirs>
