@@ -1,4 +1,4 @@
-# Last Modified: Sat Mar 25 12:44:17 2017
+# Last Modified: Sat Mar 25 14:34:52 2017
 #include <tunables/global>
 
 /usr/bin/quasselcore {
@@ -6,6 +6,7 @@
   #include <abstractions/nameservice>
   #include <abstractions/ssl_certs>
 
+  /data.www/quassel/Quassel-Crash-*.log w,
   /data.www/quassel/quasselCert.pem r,
   /data.www/quassel/quasselcore.conf rk,
   /usr/bin/quasselcore mr,
