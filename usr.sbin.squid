@@ -1,10 +1,12 @@
-# Last Modified: Sat Mar 25 12:57:17 2017
+# Last Modified: Sat Mar 25 14:20:26 2017
 #include <tunables/global>
 
 /usr/sbin/squid {
   #include <abstractions/base>
   #include <abstractions/nameservice>
+  #include <abstractions/perl>
 
+  capability net_raw,
   capability setgid,
   capability setuid,
 
@@ -22,14 +24,16 @@
   /run/squid.pid rw,
   /tmp/squid-redirect.log rw,
   /usr/libexec/squid/log_file_daemon Cx,
-  /usr/libexec/squid/log_file_daemon r,
+  /usr/libexec/squid/log_file_daemon mr,
   /usr/libexec/squid/pinger Cx,
+  /usr/libexec/squid/pinger mr,
   /usr/libexec/squid/unlinkd r,
   /usr/sbin/squid mr,
   /usr/sbin/squid rix,
   /usr/share/squid/errors/templates/* r,
   /usr/share/squid/icons/ r,
   /usr/share/squid/icons/** r,
+  /var/lib/squid/netdb.state w,
   /var/log/squid/* rw,
 
 
