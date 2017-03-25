@@ -127,7 +127,6 @@
     @{DATA_WWW}/** mrix,
 
     /tmp/.ZendSem.* rwk,
-
     /var/log/apache2/*.log w,
 
   }
@@ -137,16 +136,15 @@
 
     /dev/tty rw,
 
+    /etc/ld.so.cache r,
+
     @{PROC}/sys/vm/overcommit_memory r,
 
-    /var/log/apache2/* rw,
-    /run/apache_ssl_mutex/* rwk,
-
-    /etc/ld.so.cache r,
-    @{DATA_WWW}/ rw,
-    @{DATA_WWW}/** mrwlkix,
+    @{DATA_WWW}/ r,
+    @{DATA_WWW}/** r,
 
     /tmp/.ZendSem.* rwk,
+    /var/log/apache2/*.log w,
   }
 
   # This directory contains web application
