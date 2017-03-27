@@ -25,6 +25,7 @@
   /{var/spool/postfix/,}active/[0-9A-F]/[0-9A-F]/                  rwlk,
   /{var/spool/postfix/,}active/[0-9A-F]/*                          rwlk,
   /{var/spool/postfix/,}active/[0-9A-F]/                           rwlk,
+  /{var/spool/postfix/,}active/*                                   rwlk,
   /{var/spool/postfix/,}bounce/[0-9A-F]/[0-9A-F]/*                 rwlk,
   /{var/spool/postfix/,}bounce/[0-9A-F]/[0-9A-F]/                  rwlk,
   /{var/spool/postfix/,}bounce/[0-9A-F]*                           rwlk,
