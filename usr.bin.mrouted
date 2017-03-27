@@ -1,0 +1,18 @@
+# Last Modified: Mon Mar 27 16:59:00 2017
+#include <tunables/global>
+
+/usr/bin/mrouted {
+  #include <abstractions/base>
+  #include <abstractions/consoles>
+  #include <abstractions/nameservice>
+
+  capability net_raw,
+
+  / r,
+  /etc/mrouted.conf r,
+  /run/mrouted.pid w,
+  /run/mrouted/mrouted.genid rw,
+  /tmp/.rsrr_svr w,
+  /usr/bin/mrouted mr,
+
+}
