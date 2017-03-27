@@ -9,5 +9,7 @@
 #
 # ------------------------------------------------------------------
 
+@{DATA_STAGE}="/data.stage"
 @{DATA_WWW}="/data.www"
 @{DATA_SRV}="/data.srv"
+@{DATA_N9}="/n9.backup"
