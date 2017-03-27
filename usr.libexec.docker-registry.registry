@@ -12,5 +12,6 @@ profile docker-registry /usr/libexec/docker-registry/registry {
   /usr/libexec/docker-registry/registry mr,
 
   @{DATA_SRV}/docker/registry/certs/* r,
+  @{DATA_SRV}/docker/registry/data/** rw,
 
 }
