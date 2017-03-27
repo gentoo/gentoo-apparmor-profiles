@@ -1,0 +1,20 @@
+# Last Modified: Mon Mar 27 17:14:20 2017
+#include <tunables/global>
+
+/usr/sbin/zebra {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  capability net_admin,
+  capability setuid,
+  capability setgid,
+
+  /etc/quagga/zebra.conf r,
+  /proc/sys/net/ipv6/conf/all/forwarding r,
+  /run/quagga/zebra.pid rwk,
+  /run/quagga/zebra.vty w,
+  /run/quagga/zserv.api w,
+  /usr/sbin/zebra mr,
+  /var/log/zebra.log w,
+
+}

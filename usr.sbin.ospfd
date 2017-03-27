@@ -1,0 +1,18 @@
+# Last Modified: Mon Mar 27 17:22:01 2017
+#include <tunables/global>
+
+/usr/sbin/ospfd {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  capability net_raw,
+  capability setgid,
+  capability setuid,
+
+  /etc/quagga/ospfd.conf r,
+  /run/quagga/ospfd.pid rwk,
+  /run/quagga/ospfd.vty w,
+  /usr/sbin/ospfd mr,
+  /var/log/ospfd.log w,
+
+}

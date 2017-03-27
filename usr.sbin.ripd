@@ -1,0 +1,18 @@
+# Last Modified: Mon Mar 27 17:24:37 2017
+#include <tunables/global>
+
+/usr/sbin/ripd {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  capability net_bind_service,
+  capability setgid,
+  capability setuid,
+
+  /etc/quagga/ripd.conf r,
+  /run/quagga/ripd.pid rwk,
+  /run/quagga/ripd.vty w,
+  /usr/sbin/ripd mr,
+  /var/log/ripd.log w,
+
+}

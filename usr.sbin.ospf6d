@@ -1,0 +1,18 @@
+# Last Modified: Mon Mar 27 17:14:19 2017
+#include <tunables/global>
+
+/usr/sbin/ospf6d {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  capability net_raw,
+  capability setuid,
+  capability setgid,
+
+  /etc/quagga/ospf6d.conf r,
+  /run/quagga/ospf6d.pid rwk,
+  /run/quagga/ospf6d.vty w,
+  /usr/sbin/ospf6d mr,
+  /var/log/ospf6d.log w,
+
+}
