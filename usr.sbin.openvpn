@@ -8,6 +8,8 @@
   #include <abstractions/nameservice>
 
   capability net_admin,
+  capability setgid,
+  capability setuid,
 
   @{PROC}/@{PID}/net/route r,
 
