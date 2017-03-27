@@ -1,4 +1,4 @@
-# Last Modified: Sun Mar 26 11:30:10 2017
+# Last Modified: Mon Mar 27 10:19:24 2017
 #include <tunables/global>
 
 /usr/bin/dockerd {
@@ -17,7 +17,7 @@
   / r,
   /.pivot_root*/ w,
   /Dockerfile w,
-  /Makefile w,
+  /Makefile* w,
   /bin/kmod mr,
   /bin/kmod rix,
   /data.stage/docker/git/** r,
