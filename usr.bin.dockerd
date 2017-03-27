@@ -1,4 +1,4 @@
-# Last Modified: Mon Mar 27 10:19:24 2017
+# Last Modified: Mon Mar 27 12:48:21 2017
 #include <tunables/global>
 
 /usr/bin/dockerd {
@@ -43,7 +43,7 @@
   /etc/os-release r,
   /etc/resolv.conf r,
   /etc/udev/udev.conf r,
-  /run/blkid/ w,
+  /run/blkid/ rw,
   /run/blkid/* rwl,
   /run/docker.pid w,
   /run/docker.sock w,
@@ -126,6 +126,7 @@
     #include <abstractions/base>
 
     /dev/dm-* r,
+    /run/blkid/ w,
     /run/blkid/* rwl,
     /sbin/blkid mr,
     /sys/devices/virtual/block/dm-*/ r,

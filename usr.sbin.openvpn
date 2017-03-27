@@ -1,4 +1,4 @@
-# Last Modified: Wed Mar 15 12:29:33 2017
+# Last Modified: Mon Mar 27 12:48:21 2017
 #include <tunables/global>
 
 /usr/sbin/openvpn {
@@ -8,6 +8,8 @@
   #include <abstractions/nameservice>
 
   capability net_admin,
+
+  @{PROC}/@{PID}/net/route r,
 
   /bin/bash mrix,
   /bin/chmod rix,
@@ -19,17 +21,19 @@
   /etc/openvpn/ r,
   /etc/openvpn/down.sh rix,
   /etc/openvpn/openvpn.conf r,
+  /etc/openvpn/private/*.key r,
   /etc/openvpn/ssl/certs/*.crt r,
   /etc/openvpn/ssl/private/*.pem r,
   /etc/openvpn/ssl/root/*.crt r,
+  /etc/openvpn/status-*.log w,
   /etc/openvpn/ta.key r,
   /etc/openvpn/up.sh rix,
   /etc/resolv.conf rw,
   /etc/resolv.conf-*.sv rw,
   /lib64/rc/sh/openrc-run.sh Ux,
-  /proc/*/net/route r,
-  /run/openvpn.pid w,
+  /{var/,}run/openvpn.pid w,
   /sbin/openrc-run ix,
   /usr/sbin/openvpn mr,
+  /var/log/openvpn-*.log w,
 
 }
