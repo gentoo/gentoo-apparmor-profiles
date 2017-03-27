@@ -1,4 +1,4 @@
-# Last Modified: Fri Mar 24 20:30:05 2017
+# Last Modified: Mon Mar 27 10:14:00 2017
 @{CHROOT_BASE} = ""
 
 #include <tunables/global>
@@ -38,6 +38,13 @@ profile syslog-ng /{usr/,}sbin/syslog-ng {
   unix (receive) type=dgram,
   unix (receive) type=stream,
 
+  @{PROC}/@{PID}/cgroup r,
+  @{PROC}/@{PID}/cmdline r,
+  @{PROC}/@{PID}/loginuid r,
+  @{PROC}/@{PID}/sessionid r,
+  @{PROC}/kmsg r,
+
+  /dev/kmsg r,
   /dev/log w,
   /dev/syslog w,
   /dev/tty10 rwk,
@@ -49,9 +56,6 @@ profile syslog-ng /{usr/,}sbin/syslog-ng {
   /etc/syslog-ng/* r,
   /etc/syslog-ng/conf.d/ r,
   /etc/syslog-ng/conf.d/* r,
-  /proc/*/cmdline r,
-  /proc/*/loginuid r,
-  /proc/*/sessionid r,
   /sys/devices/system/cpu/online r,
   /usr/share/include/scl/ r,
   /usr/share/include/scl/** r,
@@ -63,11 +67,11 @@ profile syslog-ng /{usr/,}sbin/syslog-ng {
   /{var,var/run,run}/log/journal/*/*.journal r,
   /{var/,}run/syslog-ng.ctl a,
   /{var/,}run/syslog-ng/additional-log-sockets.conf r,
+
   @{CHROOT_BASE}/var/lib/*/dev/log w,
   @{CHROOT_BASE}/var/lib/syslog-ng/syslog-ng.persist* rw,
   @{CHROOT_BASE}/var/log/** w,
   @{CHROOT_BASE}/{,var/}run/syslog-ng.ctl rw,
   @{CHROOT_BASE}/{,var/}run/syslog-ng.pid rwk,
-  @{PROC}/kmsg r,
 
 }

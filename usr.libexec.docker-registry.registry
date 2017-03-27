@@ -1,4 +1,4 @@
-# Last Modified: Sun Mar 26 20:10:52 2017
+# Last Modified: Mon Mar 27 10:14:00 2017
 #include <tunables/global>
 
 profile docker-registry /usr/libexec/docker-registry/registry {
@@ -7,9 +7,10 @@ profile docker-registry /usr/libexec/docker-registry/registry {
   @{PROC}/sys/kernel/hostname r,
   @{PROC}/sys/net/core/somaxconn r,
 
-  @{DATA_SRV}/docker/registry/certs/* r,
-
+  /data.srv/docker/registry/data/ r,
   /etc/docker/registry/config.yml r,
   /usr/libexec/docker-registry/registry mr,
+
+  @{DATA_SRV}/docker/registry/certs/* r,
 
 }
