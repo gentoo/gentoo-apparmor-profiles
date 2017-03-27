@@ -1,0 +1,21 @@
+# Last Modified: Mon Mar 27 17:10:43 2017
+#include <tunables/global>
+
+/usr/sbin/radvd {
+  #include <abstractions/base>
+  #include <abstractions/consoles>
+  #include <abstractions/nameservice>
+
+  capability dac_override,
+  capability net_raw,
+  capability setgid,
+  capability setuid,
+
+  /etc/radvd.conf r,
+  /proc/sys/net/ipv6/conf/*/hop_limit w,
+  /proc/sys/net/ipv6/conf/all/forwarding r,
+  /run/radvd/ r,
+  /run/radvd/radvd.pid rwk,
+  /usr/sbin/radvd mr,
+
+}
