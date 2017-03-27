@@ -26,9 +26,9 @@
   /usr/sbin/postdrop                           rPx,
 
   /dev/urandom                                r,
-  /etc/aliases.db                             r,
+  /etc/{mail/,}aliases.db                     r,
   # mailman on SuSE is configured to have its own alias db
-  /var/libexec/mailman/data/aliases.db            r,
+  /var/libexec/mailman/data/aliases.db        r,
   /etc/mtab                                   r,
   /etc/fstab                                  r,
   /etc/postfix/*.db                           r,
@@ -45,7 +45,7 @@
 
   /usr/share/ssl/certs/ca-bundle.crt          r,
 
-  /{var/spool/postfix/,}pid/inet.*               rw,
+  /{var/spool/postfix/,}pid/inet.*               rwk,
   /{var/spool/postfix/,}private/anvil            w,
   /{var/spool/postfix/,}private/proxymap         w,
   /{var/spool/postfix/,}private/rewrite          w,
