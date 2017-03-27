@@ -11,9 +11,7 @@
   @{PROC}/@{PID}/net/dev r,
   @{PROC}/@{PID}/net/if_inet6 r,
 
-  /tmp/*.gnmap w,
-  /tmp/*.nmap w,
-  /tmp/*.xml w,
+  /tmp/** w,
 
   /usr/bin/nmap mr,
   /usr/share/nmap/** r,
