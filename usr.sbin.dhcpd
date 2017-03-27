@@ -1,0 +1,29 @@
+# Last Modified: Mon Mar 27 17:02:55 2017
+#include <tunables/global>
+
+/usr/sbin/dhcpd {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+
+  capability chown,
+  capability dac_override,
+  capability fowner,
+  capability net_bind_service,
+  capability net_raw,
+  capability setgid,
+  capability setuid,
+  capability sys_chroot,
+
+  /usr/sbin/dhcpd mr,
+
+  /{var/lib/dhcp/chroot/,}etc/dhcp/dhcpd.conf r,
+  /{var/lib/dhcp/chroot/,}etc/localtime r,
+  /{var/lib/dhcp/chroot/,}etc/resolv.conf r,
+
+  /{var/lib/dhcp/chroot/,}/@{PID}/net/dev r,
+  /{var/lib/dhcp/chroot/,}proc/@{PID}/net/dev r,
+
+  /{var/lib/dhcp/chroot/,}var/lib/dhcp/dhcpd.leases* rwl,
+  /{var/lib/dhcp/chroot/,}var/run/dhcp/dhcpd.pid w,
+
+}
