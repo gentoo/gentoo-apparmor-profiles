@@ -1,4 +1,4 @@
-# Last Modified: Tue Feb 21 00:35:39 2017
+# Last Modified: Mon Mar 27 15:47:40 2017
 #include <tunables/global>
 
 # ------------------------------------------------------------------
@@ -26,6 +26,7 @@ profile dhcpcd /{usr/,}sbin/dhcpcd {
   #include <abstractions/consoles>
   #include <abstractions/nameservice>
 
+  capability dac_override,
   capability net_admin,
   capability net_raw,
   capability sys_admin,
@@ -34,6 +35,7 @@ profile dhcpcd /{usr/,}sbin/dhcpcd {
   /etc/dhcpc/* rwl,
   /etc/dhcpcd.conf r,
   /etc/dhcpcd.duid rw,
+  /etc/dhcpcd.secret rw,
   /etc/init.d/ntpd Ux, # fixme
   /etc/init.d/syslog Ux, # fixme
   /etc/init.d/syslog-ng Ux, # fixme
