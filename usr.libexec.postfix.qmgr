@@ -21,6 +21,8 @@
   /usr/libexec/postfix/qmgr mrix,
   /{var/spool/postfix/,}active/ r,
   /{var/spool/postfix/,}active/** rwlk,
+  /{var/spool/postfix/,}bounce/ r,
+  /{var/spool/postfix/,}bounce/** rwlk,
   /{var/spool/postfix/,}defer/ r,
   /{var/spool/postfix/,}defer/** rwlk,
   /{var/spool/postfix/,}deferred/ r,
