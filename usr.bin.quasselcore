@@ -1,4 +1,4 @@
-# Last Modified: Sat Mar 25 14:34:52 2017
+# Last Modified: Mon Mar 27 13:20:52 2017
 #include <tunables/global>
 
 /usr/bin/quasselcore {
@@ -8,7 +8,7 @@
 
   /data.www/quassel/Quassel-Crash-*.log w,
   /data.www/quassel/quasselCert.pem r,
-  /data.www/quassel/quasselcore.conf rk,
+  /data.www/quassel/quasselcore.conf rwk,
   /usr/bin/quasselcore mr,
   /var/lib/quassel/.config/Trolltech.conf rk,
   /var/log/quassel.log w,

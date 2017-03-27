@@ -1,4 +1,4 @@
-# Last Modified: Mon Mar 27 10:13:32 2017
+# Last Modified: Mon Mar 27 13:21:46 2017
 #include <tunables/global>
 
 # Note: This profile needs that Synapse gets started with `aa-exec -p synapse synctrl start`
@@ -12,7 +12,7 @@ profile synapse {
 
   /etc/env.d/python/config r,
   /etc/python-exec/python-exec.conf r,
-  /etc/synapse/homeserver.yaml r,
+  /etc/synapse/*.yaml r,
   /usr/bin/python2.7 mrCx,
   /usr/lib64/python-exec/python2.7/synctl ix,
   /{,var/}run/lock/synapse/** rwk,
@@ -26,30 +26,33 @@ profile synapse {
     #include <abstractions/nameservice>
     #include <abstractions/python>
 
-    / r,
-    /bin/bash rix,
-    /etc/mime.types r,
-    /etc/synapse/homeserver-logging.yaml r,
-    /etc/synapse/homeserver.yaml r,
-    /etc/synapse/keys/* r,
-    /sbin/ldconfig rix,
-    /tmp/* rw,
-    /usr/bin/git rix,
-    /usr/bin/python2.7 mr,
-    /var/lib/synapse/ r,
-    /var/lib/synapse/* rw,
-    /var/log/synapse/synapse.log w,
-    /var/log/synapse/synapse.log.2 w,
-    /var/tmp/* rw,
-    /{,var/}run/synapse/homeserver.pid rwk,
-    @{DATA_WWW}/letsencrypt/ssl/certs/matrix.darkchannel.net.crt r,
-    @{DATA_WWW}/letsencrypt/ssl/priv/matrix.darkchannel.net.pem r,
+    @{DATA_WWW}/letsencrypt/ssl/certs/*.crt r,
+    @{DATA_WWW}/letsencrypt/ssl/priv/*.pem r,
     @{DATA_WWW}/synapse/ r,
     @{DATA_WWW}/synapse/** rwk,
+
     @{PROC}/@{PID}/mounts r,
     @{PROC}/@{PID}/stat r,
     @{PROC}/@{PID}/statm r,
     @{PROC}/@{PID}/status r,
+
+    /var/tmp/* rw,
+    /tmp/* rw,
+
+    / r,
+    /bin/bash rix,
+    /etc/mime.types r,
+    /etc/synapse/*.yaml r,
+    /etc/synapse/keys/* r,
+    /sbin/ldconfig rix,
+    /usr/bin/git rix,
+    /usr/bin/python2.7 mr,
+
+    /var/lib/synapse/ r,
+    /var/lib/synapse/* rw,
+    /var/log/synapse/synapse.log* rw,
+
+    /{,var/}run/synapse/homeserver.pid rwk,
 
   }
 }
