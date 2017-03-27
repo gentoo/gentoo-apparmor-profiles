@@ -35,7 +35,7 @@ profile dhcpcd /{usr/,}sbin/dhcpcd {
   /etc/dhcpc/* rwl,
   /etc/dhcpcd.conf r,
   /etc/dhcpcd.duid rw,
-  /etc/dhcpcd.secret rw,
+  /etc/dhcpcd.secret rwl,
   /etc/init.d/ntpd Ux, # fixme
   /etc/init.d/syslog Ux, # fixme
   /etc/init.d/syslog-ng Ux, # fixme
