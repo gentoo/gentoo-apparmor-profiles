@@ -5,7 +5,7 @@
   #include <abstractions/base>
 
   @{DATA_N9}/bin/* mrix,
-  @{DATA_N9}/usr/bin/* ixr,
+  @{DATA_N9}/usr/bin/* rix,
 
   @{DATA_N9}/ r,
   @{DATA_N9}/data.dom0/ r,
