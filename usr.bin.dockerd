@@ -1,4 +1,4 @@
-# Last Modified: Mon Mar 27 12:48:21 2017
+# Last Modified: Tue Mar 28 09:40:34 2017
 #include <tunables/global>
 
 /usr/bin/dockerd {
@@ -20,6 +20,7 @@
   /Makefile* w,
   /bin/kmod mr,
   /bin/kmod rix,
+  /conf/ w,
   /data.stage/docker/git/** r,
   /data.stage/docker/local/ w,
   /data.stage/docker/local/** rwk,
