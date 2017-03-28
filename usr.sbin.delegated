@@ -24,6 +24,7 @@
   /usr/sbin/delegated rix,
   /var/empty/delegate/** rwk,
   /var/log/delegate-*.log wk,
-  /{var/,}run/delegated/*.pid rw,
+
+  /{var/,}run/delegated/*.pid rwk,
 
 }
