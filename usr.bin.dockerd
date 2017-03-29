@@ -1,4 +1,4 @@
-# Last Modified: Tue Mar 28 09:40:34 2017
+# Last Modified: Wed Mar 29 12:43:58 2017
 #include <tunables/global>
 
 /usr/bin/dockerd {
@@ -21,6 +21,7 @@
   /bin/kmod mr,
   /bin/kmod rix,
   /conf/ w,
+  /conf/fonts.conf w,
   /data.stage/docker/git/** r,
   /data.stage/docker/local/ w,
   /data.stage/docker/local/** rwk,
