@@ -26,7 +26,7 @@
   /usr/sbin/postdrop                           rPx,
 
   /dev/urandom                                r,
-  /etc/{mail/,}aliases.db                     r,
+  /etc/{mail/,}aliases.db                     rk,
   # mailman on SuSE is configured to have its own alias db
   /var/libexec/mailman/data/aliases.db        r,
   /etc/mtab                                   r,
