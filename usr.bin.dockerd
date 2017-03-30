@@ -1,4 +1,4 @@
-# Last Modified: Wed Mar 29 12:43:58 2017
+# Last Modified: Thu Mar 30 10:21:29 2017
 #include <tunables/global>
 
 /usr/bin/dockerd {
@@ -25,7 +25,7 @@
   /data.stage/docker/git/** r,
   /data.stage/docker/local/ w,
   /data.stage/docker/local/** rwk,
-  /dev/dm-1 r,
+  /dev/dm-[0-9] rw,
   /dev/loop* rw,
   /dev/loop-control r,
   /dev/mapper/control rw,
