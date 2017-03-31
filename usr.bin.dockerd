@@ -1,4 +1,4 @@
-# Last Modified: Thu Mar 30 10:21:29 2017
+# Last Modified: Fri Mar 31 20:05:05 2017
 #include <tunables/global>
 
 /usr/bin/dockerd {
@@ -152,6 +152,8 @@
     /run/docker/libcontainerd/ rw,
     /run/docker/libcontainerd/** rw,
     /usr/bin/containerd mr,
+    /usr/bin/containerd-shim rix,
+    /usr/bin/runc rix,
     @{PROC}/meminfo r,
     @{PROC}/stat r,
     @{PROC}/sys/net/core/somaxconn r,
