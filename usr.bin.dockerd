@@ -1,4 +1,4 @@
-# Last Modified: Mon Apr  3 13:40:09 2017
+# Last Modified: Thu Apr  6 09:17:43 2017
 #include <tunables/global>
 
 /usr/bin/dockerd {
@@ -152,6 +152,7 @@
     /run/docker/libcontainerd/ rw,
     /run/docker/libcontainerd/** rw,
     /run/runc/ w,
+    /run/runc/*/ w,
     /usr/bin/containerd mr,
     /usr/bin/containerd-shim rix,
     /usr/bin/runc rix,
