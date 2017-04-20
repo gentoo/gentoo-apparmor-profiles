@@ -1,22 +1,29 @@
-# Last Modified: Sun Feb 19 16:26:51 2017
+# Last Modified: Thu Apr 20 09:52:45 2017
 #include <tunables/global>
 
 /usr/bin/evince {
   #include <abstractions/audio>
   #include <abstractions/base>
+  #include <abstractions/consoles>
   #include <abstractions/cups-client>
   #include <abstractions/dbus-session-strict>
   #include <abstractions/fonts>
   #include <abstractions/freedesktop.org>
   #include <abstractions/gnome>
   #include <abstractions/nameservice>
-  #include <abstractions/consoles>
+
+  capability setgid,
+  capability setuid,
+  capability sys_ptrace,
 
   /**.pdf r,
-  /proc/*/comm r,
-  /proc/*/fd/ r,
+  /bin/env rix,
+  /etc/firejail/ r,
+  /etc/firejail/* r,
   /run/firejail/mnt/fslogger r,
   /usr/bin/evince mr,
+  /usr/bin/evince rix,
+  /usr/bin/firejail rix,
   /usr/share/cursors/** r,
   /usr/share/evince/icons/ r,
   /usr/share/evince/icons/hicolor/16x16/actions/ r,
@@ -36,11 +43,20 @@
   /usr/share/poppler/nameToUnicode/ r,
   /usr/share/poppler/nameToUnicode/* r,
   /usr/share/poppler/unicodeMap/ r,
-
+  @{PROC}/@{PID}/comm r,
+  @{PROC}/@{PID}/environ r,
+  @{PROC}/@{PID}/fd/ r,
   owner /tmp/** rw,
   owner @{HOME}/.Xauthority r,
   owner @{HOME}/.cache/dconf/user rw,
   owner @{HOME}/.config/dconf/user r,
+  owner @{HOME}/.config/evince/ rw,
+  owner @{HOME}/.config/evince/accels rw,
+  owner @{HOME}/.config/evince/accels.* rw,
+  owner @{HOME}/.config/evince/print-settings rw,
+  owner @{HOME}/.config/evince/print-settings.* rw,
+  owner @{HOME}/.config/firejail/ r,
+  owner @{HOME}/.config/firejail/evince.profile r,
   owner @{HOME}/.config/fontconfig/fonts.conf r,
   owner @{HOME}/.config/pulse/ rwk,
   owner @{HOME}/.config/pulse/cookie rk,
@@ -49,6 +65,9 @@
   owner @{HOME}/.local/share/applications/mimeapps.list r,
   owner @{HOME}/.local/share/applications/mimeinfo.cache r,
   owner @{HOME}/.local/share/applications/userapp-Thunderbird-*.desktop r,
+  owner @{HOME}/.local/share/applications/wine/ r,
+  owner @{HOME}/.local/share/applications/wine/Programs/ r,
+  owner @{HOME}/.local/share/applications/wine/Programs/SpaceEngine/ r,
   owner @{HOME}/.local/share/gvfs-metadata/*.log r,
   owner @{HOME}/.local/share/gvfs-metadata/home r,
   owner @{HOME}/.local/share/gvfs-metadata/root r,
