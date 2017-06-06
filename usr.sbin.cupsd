@@ -1,4 +1,4 @@
-# Last Modified: Mon Mar 20 11:31:13 2017
+# Last Modified: Wed May  3 20:49:14 2017
 #include <tunables/global>
 
 /usr/sbin/cupsd {
@@ -72,8 +72,11 @@
   /var/log/cups/ w,
   /var/log/cups/* rw,
   /var/spool/cups rw,
+  /var/spool/cups-pdf/**.pdf rw,
+  /var/spool/cups-pdf/SPOOL/* rw,
   /var/spool/cups/ r,
   /var/spool/cups/** rw,
+  /var/tmp/gs_* rw,
   /{,var/}run/cups/ rw,
   /{,var/}run/cups/** rw,
   /{usr/,}bin/bash rix,
