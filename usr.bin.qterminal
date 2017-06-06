@@ -1,4 +1,4 @@
-# Last Modified: Tue Jun  6 12:04:44 2017
+# Last Modified: Tue Jun  6 12:06:56 2017
 #include <tunables/global>
 
 /usr/bin/qterminal {
@@ -17,9 +17,13 @@
   /etc/udev/udev.conf r,
   /home/*/.cache/qt_compose_cache_* rw,
   /run/udev/data/+pci:* r,
-  /sys/devices/**/config r,
-  /sys/devices/**/uevent r,
+  /sys/devices/pci*/*/config r,
+  /sys/devices/pci*/*/uevent r,
+  /sys/devices/pci*/*/device r,
   /sys/devices/pci*/*/revision r,
+  /sys/devices/pci*/*/subsystem_device r,
+  /sys/devices/pci*/*/subsystem_vendor r,
+  /sys/devices/pci*/*/vendor r,
   /usr/bin/qterminal mr,
   /usr/bin/xdg-open r,
   /usr/share/cursors/** r,
