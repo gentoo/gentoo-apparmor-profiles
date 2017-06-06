@@ -1,4 +1,4 @@
-# Last Modified: Mon Feb 27 11:27:00 2017
+# Last Modified: Tue Jun  6 12:04:44 2017
 #include <tunables/global>
 
 /usr/bin/quasselclient flags=(attach_disconnected) {
@@ -26,6 +26,7 @@
   /run/udev/data/+pci* r,
   /sys/devices/pci**/config r,
   /sys/devices/pci**/uevent r,
+  /sys/devices/pci*/*/revision r,
   /tmp/orcexec.* m,
   /usr/bin/dbus-send r,
   /usr/bin/pulseaudio Px,
@@ -44,7 +45,6 @@
   /usr/share/quassel/translations/*.qm r,
   /var/tmp/kdecache-amir/icon-cache.kcache rw,
   /{usr/,}lib{,32,64}/** mr,
-
   owner @{HOME}/.Xauthority r,
   owner @{HOME}/.cache/gstreamer-1.0/ w,
   owner @{HOME}/.cache/gstreamer-1.0/registry.x86_64.bin rw,

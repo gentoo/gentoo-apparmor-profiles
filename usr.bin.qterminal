@@ -1,4 +1,4 @@
-# Last Modified: Mon Mar 20 11:40:06 2017
+# Last Modified: Tue Jun  6 12:04:44 2017
 #include <tunables/global>
 
 /usr/bin/qterminal {
@@ -15,9 +15,11 @@
   /dev/dri/ r,
   /dev/ptmx rw,
   /etc/udev/udev.conf r,
+  /home/*/.cache/qt_compose_cache_* rw,
   /run/udev/data/+pci:* r,
   /sys/devices/**/config r,
   /sys/devices/**/uevent r,
+  /sys/devices/pci*/*/revision r,
   /usr/bin/qterminal mr,
   /usr/bin/xdg-open r,
   /usr/share/cursors/** r,
@@ -33,6 +35,5 @@
   owner @{HOME}/.config/qterminal.org/.* rwk,
   owner @{HOME}/.config/qterminal.org/qterminal.ini rw,
   owner @{HOME}/.config/qterminal.org/qterminal.ini.* rwk,
-  /home/*/.cache/qt_compose_cache_* rw,
 
 }
