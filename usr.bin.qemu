@@ -1,17 +1,40 @@
-# Last Modified: Wed Mar 22 17:49:52 2017
+# Last Modified: Tue Jun 13 10:31:52 2017
 #include <tunables/global>
 
 profile qemu /usr/bin/qemu-{,system}-{i386,x86_64} {
+  #include <abstractions/X>
+  #include <abstractions/audio>
   #include <abstractions/base>
   #include <abstractions/consoles>
+  #include <abstractions/dbus-session-strict>
+  #include <abstractions/gnome>
   #include <abstractions/nameservice>
 
+  /dev/dri/ r,
   /dev/kvm rw,
-  /home/**.img rw,
+
+  /sys/devices/pci*/*/config r,
+  /sys/devices/pci*/*/device r,
+  /sys/devices/pci*/*/revision r,
+  /sys/devices/pci*/*/subsystem_vendor r,
+  /sys/devices/pci*/*/subsystem_device r,
+  /sys/devices/pci*/*/uevent r,
+  /sys/devices/pci*/*/vendor r,
+
+  @{PROC}/@{PID}/cmdline r,
+
+  owner @{HOME}/**.img rw,
+  owner @{HOME}/.local/share/mime/aliases r,
+  owner @{HOME}/.local/share/mime/generic-icons r,
+  owner @{HOME}/.local/share/mime/globs2 r,
+  owner @{HOME}/.local/share/mime/icons r,
+  owner @{HOME}/.local/share/mime/magic r,
+  owner @{HOME}/.local/share/mime/mime.cache r,
+  owner @{HOME}/.local/share/mime/subclasses r,
+
   /usr/bin/qemu-system-x86_64 mr,
   /usr/share/qemu/** r,
   /usr/share/vgabios/*.bin r,
   /var/tmp/* rw,
-  owner @{HOME}/.Xauthority r,
-
+  /{usr/,}lib{,32,64}/** mr,
 }
