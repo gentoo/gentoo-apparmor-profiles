@@ -93,6 +93,7 @@ profile firejail-default {
   @{PROC}/@{PID}/stat r,
   @{PROC}/@{PID}/statm r,
   @{PROC}/@{PID}/status r,
+  @{PROC}/@{PID}/smaps r,
   @{PROC}/@{PID}/task/ r,
   @{PROC}/@{PID}/task/@{PID}/stat r,
   @{PROC}/asound/card[0-9]/ r,
